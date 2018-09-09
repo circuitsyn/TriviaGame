@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "titleFont";
+    src: url("../../assets/fonts/titleFont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "mainFont";
+    src: url("../../assets/fonts/mainFont.woff") format("woff");
+}
+
+body, html {
+    height: 100%;
+    color: white;
+    font-family: mainFont !important;
+    opacity: 1;
+    overflow-x: scroll;
+}
+
+.bg {
+/*Background image:*/
+background-image: url("../images/background.png");
+
+
+ /* Full height */
+ 
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+
+
+.mainArea {
+    background-color: #43B047;
+    border: solid white 2px;
+    border-radius: 25px;
+    height: 70%;
+    opacity: 0.8;
+    margin-top: 5%;
+    
+}
+
+.title {
+    width: 100%;
+}
+
+h1 {
+    font-family: "titleFont";
+    text-align: center;
+    width: 100%;
+    font-size: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
