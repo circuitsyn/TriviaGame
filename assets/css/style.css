@@ -33,11 +33,11 @@ background-image: url("../images/background.png");
 
 
 .mainArea {
-    background-color: #43B047;
+    background-color: rgba(67, 176, 71, 0.8);
     border: solid white 2px;
     border-radius: 25px;
     height: 70%;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     margin-top: 5%;
     
 }
