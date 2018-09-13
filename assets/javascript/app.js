@@ -4,18 +4,59 @@ var gameVariables = {
     correct: 0,
     incorrect: 0,
     missed: 0,
+    timeLeft: 0,
+    endImage: '<img class="images" src="../../assets/images/End.gif" alt="End of Game">',
+    //method to push and track time left to make a choice
     timer: function (){
         
-        for (x=30; x>0 ; x-- ){
-                setTimeout(function(){
-                    (($('#time').html('Time Remaining: ' + x + ' Seconds!')), 1000);
-                // $('#time').fadeIn(200).delay(600).slidUp(200);
-                } )   
-            }
+        action = $('#time').html('Time Remaining: ' + x + ' Seconds!');
+        },    
+    
+    //method to clear div's
+    clearDivs: function(){
+        $('#question').empty();
+        $('#choiceA').empty();
+        $('#choiceB').empty();
+        $('#choiceC').empty();
+        $('#choiceD').empty();
+        $('#time').empty();
+    },
+    
+    //Method to push question and choices from array
+    pushQs: function(){
+        $('#question').append(gamePlayArray[i].question);
+        $('#choiceA').append(gamePlayArray[i].choice1);
+        $('#choiceB').append(gamePlayArray[i].choice2);
+        $('#choiceC').append(gamePlayArray[i].choice3);
+        $('#choiceD').append(gamePlayArray[i].choice4);
+    },
+
+    //Push wrong response screen
+    pushWrong: function(){
+        $('#question').append(gamePlayArray[i].wrongAnswer);
+        $('#choiceA').append("Time Left: " + gameVariables.timeLeft);
+        $('#choiceB').append(gamePlayArray[i].gif);
+    },
+
+    //Push correct response screen
+    pushCorrect: function(){
+        $('#question').append(gamePlayArray[i].rightAnswer);
+        $('#choiceA').append("Time Left: " + gameVariables.timeLeft)
+        $('#choiceB').append(gamePlayArray[i].gif);
         
     },
 
-};
+    pushResults: function() {
+        $('#question').append("Number Correct: " + gameVariables.correct);
+        $('#choiceA').append("Number Incorrect: " + gameVariables.incorrect);
+        $('#choiceB').append("Number Unanswered: " + gameVariables.missed);
+        $('#choiceC').append(gameVariables.endImage);
+        
+    },
+        
+    };
+
+
 
 //~~*~~*~~ Question Array Variables ~~*~~*~~
 
@@ -61,76 +102,110 @@ let gamePlayArray = [
 
 // example calls
 
-console.log('all ' + gamePlayArray);
-console.log(gamePlayArray[0]);
-console.log('sonic ' + gamePlayArray[0].question);
-console.log('mario ' + gamePlayArray[1].question);
-console.log ('------------------');
+
 $('#startbtn').click(function(){
     $('#startbtn').css({"display":"none"});
     for (i = 0; i < gamePlayArray.length; i++) {
         //Clearing out Divs as precaution each time
-        // debugger;
-        $('#question').empty();
-        $('#choiceA').empty();
-        $('#choiceB').empty();
-        $('#choiceC').empty();
-        $('#choiceD').empty();
-        $('#time').empty();
+
+        gameVariables.clearDivs();
         console.log(i);
         //push attribute section
-
+        
         //push question details
-        $('#question').append(gamePlayArray[i].question);
-        $('#choiceA').append(gamePlayArray[i].choice1);
-        $('#choiceB').append(gamePlayArray[i].choice2);
-        $('#choiceC').append(gamePlayArray[i].choice3);
-        $('#choiceD').append(gamePlayArray[i].choice4);
-        gameVariables.timer();
+        gameVariables.pushQs();
+        
+        
+        //timer countdown
+        for (x=30; x>0 ; x--){
+            setTimeout((gameVariables.timer), 1000);
+            console.log(x);
+        }
+        
+        
         
         
         //Clickable Button Section
         $('#choiceA').click(function(i){
             gamePlayArray.clicked = true;
             if (gamePlayArray[i].choiceInput1 == gamePlayArray[i].answer) {
-                console.log('Nope!');
+                gameVariables.correct++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushCorrect,3000);
             }
             else {
-
+                gameVariables.incorrect++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushWrong,3000);
+                
             }
         });
 
         $('#choiceB').click(function(i){
             gamePlayArray.clicked = true;
             if (gamePlayArray[i].choiceInput2 == gamePlayArray[i].answer) {
-                console.log('Nope!');
+                gameVariables.correct++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushCorrect,3000);
+            }
+            else {
+                gameVariables.incorrect++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushWrong,3000);
             }
         });
 
         $('#choiceC').click(function(i){
             gamePlayArray.clicked = true;
             if (gamePlayArray[i].choiceInput3 == gamePlayArray[i].answer) {
-                console.log('Yep!');
+                gameVariables.correct++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushCorrect,3000);
+                
+            }
+            else {
+                gameVariables.incorrect++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushWrong,3000);
             }
         });
 
         $('#choiceD').click(function(i){
             gamePlayArray.clicked = true;
+            gameVariables.correct++;
+            
             if (gamePlayArray[i].choiceInput4 == gamePlayArray[i].answer) {
-                console.log('Nope!');
+                gameVariables.correct++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushCorrect,3000);
+            }
+            else {
+                gameVariables.incorrect++;
+                gameVariables.clearDivs();
+                setTimeout(gameVariables.pushWrong,3000);
             }
             
         });
     
-    
+        //create check for end of time or buttons clicked
+        if ((timer === 0) || (clicked == true)) {
+            
+        }
         
-    
-    }
-    //create check for end of time or buttons clicked
-    // if ((timer === 0) || (clicked == true)) {
+        //question to reshow the the start button should the array finish after all is done
+        if ((gameVariables.correct + gameVariables.incorrect + gameVariables.missed) ==  (gamePlayArray.length-1)) {
+            gameVariables.clearDivs();
+            //brings start button back upon completion
+            $('#startbtn').css({"display":"block"});
+        }
         
-    // }
-});
+    });
+    
+    
+    
+// });
+
+
 
 
 
