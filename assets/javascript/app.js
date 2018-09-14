@@ -1,3 +1,5 @@
+var rate;
+var clockRunning = false;
 var gameVariables = {
     correct: 0,
     incorrect: 0,
@@ -6,15 +8,18 @@ var gameVariables = {
     endImage: '<img class="images" src="../../assets/images/End.gif" alt="End of Game">',
     //method to push and track time left to make a choice
     timer: function (){
-        
-        
-        $('#time').html('Time Remaining: ' + gameVariables.timeLeft + ' Seconds!');
-        this.count();
+        console.log('timer working')
+        if(!clockRunning){
+        rate = setInterval(gameVariables.count, 1000);
+        clockRunning = true;
+    }
     },
     
     count: function (){
         gameVariables.timeLeft--; 
-        rate = setInterval(gameVariables.count, 1000);
+        $('#time').html('Time Remaining: ' + gameVariables.timeLeft + ' Seconds!');
+
+        console.log(gameVariables.timeLeft)
     },    
        
     
@@ -25,7 +30,7 @@ var gameVariables = {
         $('#choiceB').empty();
         $('#choiceC').empty();
         $('#choiceD').empty();
-        $('#time').empty();
+        // $('#time').empty();
     },
     
     //Method to push question and choices from array
@@ -201,16 +206,18 @@ var gamePlayArray = [
 ];
 
 // Start game on start button click
-console.log(gamePlayArray[6]);
 
-$('#startbtn').click(function(){
+
+$('#startbtn').click(async function(){
     $('#startbtn').css({"display":"none"});
     $('#startText').css({"display":"none"});
+    // gameVariables.timer();
+
     for (i = 0; i < gamePlayArray.length; i++) {
         //Clearing out Divs as precaution each time
 
         gameVariables.clearDivs();
-        console.log(i);
+        // console.log(i);
         //push attribute section
         
         //push question details
@@ -218,8 +225,7 @@ $('#startbtn').click(function(){
         
         
         //timer countdown
-        
-        gameVariables.timer();
+        await gameVariables.timer();
         
         
         
@@ -306,7 +312,6 @@ $('#startbtn').click(function(){
     
     
  });
-
 
 
 
