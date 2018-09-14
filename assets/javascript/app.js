@@ -2,13 +2,21 @@ var gameVariables = {
     correct: 0,
     incorrect: 0,
     missed: 0,
-    timeLeft: 0,
+    timeLeft: 30,
     endImage: '<img class="images" src="../../assets/images/End.gif" alt="End of Game">',
     //method to push and track time left to make a choice
     timer: function (){
         
-        action = $('#time').html('Time Remaining: ' + x + ' Seconds!');
-        },    
+        
+        $('#time').html('Time Remaining: ' + gameVariables.timeLeft + ' Seconds!');
+        this.count();
+    },
+    
+    count: function (){
+        gameVariables.timeLeft--; 
+        rate = setInterval(gameVariables.count, 1000);
+    },    
+       
     
     //method to clear div's
     clearDivs: function(){
@@ -192,7 +200,7 @@ let gamePlayArray = [
 
 ];
 
-// example calls
+// Start game on start button click
 
 
 $('#startbtn').click(function(){
@@ -210,10 +218,8 @@ $('#startbtn').click(function(){
         
         
         //timer countdown
-        for (x=30; x>0 ; x--){
-            setTimeout(gameVariables.timer, 1000);
-            console.log(x);
-        }
+        
+        gameVariables.timer();
         
         
         
@@ -281,7 +287,7 @@ $('#startbtn').click(function(){
         });
     
         //create check for end of time or buttons clicked
-        if ((timer === 0) || (clicked == true)) {
+        if ((gameVariables.timeLeft === 0) || (gamePlayArray[i].clicked == true)) {
             gameVariables.missed++;
             gameVariables.clearDivs();
             setTimeout(gameVariables.pushMissed,3000);

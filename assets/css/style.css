@@ -38,7 +38,7 @@ background-image: url("../images/background.png");
     background-color: rgba(67, 176, 71, 0.9);
     border: solid white 2px;
     border-radius: 25px;
-    height: 70%;
+    /* height: 70%; */
     /* opacity: 0.8; */
     margin-top: 5%;
     margin-left: 8%;
