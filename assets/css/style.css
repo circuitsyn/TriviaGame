@@ -72,3 +72,8 @@ h1 {
     font-weight: 100;
     border: solid white 2px;
 }
+
+button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
