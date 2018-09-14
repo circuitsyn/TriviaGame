@@ -209,13 +209,16 @@ var gamePlayArray = [
 
 
 $('#startbtn').click(async function(){
+
     $('#startbtn').css({"display":"none"});
     $('#startText').css({"display":"none"});
     // gameVariables.timer();
 
     for (i = 0; i < gamePlayArray.length; i++) {
         //Clearing out Divs as precaution each time
-
+        console.log(i);
+        // console.log(gamePlayArray.length);
+        console.log(gamePlayArray[i]);
         gameVariables.clearDivs();
         // console.log(i);
         //push attribute section
@@ -293,7 +296,7 @@ $('#startbtn').click(async function(){
         });
     
         //create check for end of time or buttons clicked
-        if ((gameVariables.timeLeft === 0) || (gamePlayArray[i].clicked == true)) {
+        if ((gameVariables.timeLeft <= 0) || (gamePlayArray[i].clicked == true)) {
             gameVariables.missed++;
             gameVariables.clearDivs();
             setTimeout(gameVariables.pushMissed,3000);
