@@ -1,5 +1,3 @@
-//~~*~~*~~ Psuedo Code ~~*~~*~~
-
 var gameVariables = {
     correct: 0,
     incorrect: 0,
@@ -176,13 +174,13 @@ let gamePlayArray = [
 
     mortalCombat = {
         question: 'Name a famous video game series that not only was a great fighting game, but was famous for its finishing moves!',
-        choice1: '<button type="button" class="btn btn-outline-dark"> A. Street Fighter </button>',
+        choice1: '<button type="button" class="btn btn-outline-dark d-flex justify-content-center"> A. Street Fighter </button>',
         choiceInput1: 'A. Street Fighter',
-        choice2: '<button type="button" class="btn btn-outline-dark"> B. Mortal Combat </button>',
+        choice2: '<button type="button" class="btn btn-outline-dark d-flex justify-content-center"> B. Mortal Combat </button>',
         choiceInput2: 'B. Mortal Combat',
-        choice3: '<button type="button" class="btn btn-outline-dark"> C. Marvel vs. Capcom </button>',
+        choice3: '<button type="button" class="btn btn-outline-dark d-flex justify-content-center"> C. Marvel vs. Capcom </button>',
         choiceInput3: 'C. Marvel vs. Capcom',
-        choice4: '<button type="button" class="btn btn-outline-dark"> D. Battle Toads </button>',
+        choice4: '<button type="button" class="btn btn-outline-dark d-flex justify-content-center"> D. Battle Toads </button>',
         choiceInput4: 'D. Battle Toads',
         rightAnswer: 'You got it right! Well done. The answer is Mortal Combat!',
         wrongAnswer: 'You got it wrong! The correct answer is Mortal Combat! Finish Him!',
@@ -199,6 +197,7 @@ let gamePlayArray = [
 
 $('#startbtn').click(function(){
     $('#startbtn').css({"display":"none"});
+    $('#startText').css({"display":"none"});
     for (i = 0; i < gamePlayArray.length; i++) {
         //Clearing out Divs as precaution each time
 
@@ -293,14 +292,14 @@ $('#startbtn').click(function(){
             gameVariables.clearDivs();
             //brings start button back upon completion
             $('#startbtn').css({"display":"block"});
+            $('#startText').css({"display":"block"});
         }
         
-    });
+    };
     
     
     
-// });
-
+ });
 
 
 
