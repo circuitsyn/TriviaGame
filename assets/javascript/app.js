@@ -70,7 +70,7 @@ var gameVariables = {
 
 //~~*~~*~~ Question Array Variables ~~*~~*~~
 
-let gamePlayArray = [
+var gamePlayArray = [
     sonic = {
         question: 'Name a famous SEGA character that is ultra fast, was a flagship for the system and has over 100 titles to date!',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Purple Durple </button>',
@@ -201,7 +201,7 @@ let gamePlayArray = [
 ];
 
 // Start game on start button click
-
+console.log(gamePlayArray[6]);
 
 $('#startbtn').click(function(){
     $('#startbtn').css({"display":"none"});
