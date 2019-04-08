@@ -7,7 +7,7 @@ var gameVariables = {
     timeLeft: 30,
     endImage: '<img class="images" src="../../assets/images/End.gif" alt="End of Game">',
     //method to push and track time left to make a choice
-    timer: function (){
+    timer = () => {
         console.log('timer working')
         if(!clockRunning){
         rate = setInterval(gameVariables.count, 1000);
@@ -15,7 +15,7 @@ var gameVariables = {
     }
     },
     
-    count: function (){
+    count = () => {
         gameVariables.timeLeft--; 
         $('#time').html('Time Remaining: ' + gameVariables.timeLeft + ' Seconds!');
 
@@ -24,7 +24,7 @@ var gameVariables = {
        
     
     //method to clear div's
-    clearDivs: function(){
+    clearDivs = () => {
         $('#question').empty();
         $('#choiceA').empty();
         $('#choiceB').empty();
@@ -34,7 +34,7 @@ var gameVariables = {
     },
     
     //Method to push question and choices from array
-    pushQs: function(){
+    pushQ = () => {
         $('#question').append(gamePlayArray[i].question);
         $('#choiceA').append(gamePlayArray[i].choice1);
         $('#choiceB').append(gamePlayArray[i].choice2);
@@ -43,21 +43,21 @@ var gameVariables = {
     },
 
     //Push wrong response screen
-    pushWrong: function(){
+    pushWrong = () => {
         $('#question').append(gamePlayArray[i].wrongAnswer);
         $('#choiceA').append("Time Left: " + gameVariables.timeLeft);
         $('#choiceB').append(gamePlayArray[i].gif);
     },
 
     //Push correct response screen
-    pushCorrect: function(){
+    pushCorrect = () => {
         $('#question').append(gamePlayArray[i].rightAnswer);
         $('#choiceA').append("Time Left: " + gameVariables.timeLeft)
         $('#choiceB').append(gamePlayArray[i].gif);
         
     },
 
-    pushResults: function() {
+    pushResults = () => {
         $('#question').append("Number Correct: " + gameVariables.correct);
         $('#choiceA').append("Number Incorrect: " + gameVariables.incorrect);
         $('#choiceB').append("Number Unanswered: " + gameVariables.missed);
@@ -65,7 +65,7 @@ var gameVariables = {
         
     },
 
-    pushMissed: function() {
+    pushMissed = () => {
         $('#question').append("You missed it! Let's try on the next Question!");
     }
         
@@ -76,7 +76,8 @@ var gameVariables = {
 //~~*~~*~~ Question Array Variables ~~*~~*~~
 
 var gamePlayArray = [
-    sonic = {
+    // Sonic
+    {
         question: 'Name a famous SEGA character that is ultra fast, was a flagship for the system and has over 100 titles to date!',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Purple Durple </button>',
         choiceInput1: 'A. Purple Durple',
@@ -94,8 +95,8 @@ var gamePlayArray = [
         clicked: false,
         
     },
-
-    mario = {
+    // Mario
+    {
         question: 'Name a famous Nintendo Character that is from a famous 2d side scoller and is always trying to rescue a princess!',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Mario </button>',
         choiceInput1: 'A. Mario',
@@ -112,8 +113,8 @@ var gamePlayArray = [
         answer: 'A. Mario',
         clicked: false,
     },
-
-    crash = {
+    // Crash
+    {
         question: 'What terrestrial marsupial would work through portals and spin in order to defeat the evil Dr. Neo Cortex!',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Pickle Rick </button>',
         choiceInput1: 'A. Pickle Rick',
@@ -130,8 +131,8 @@ var gamePlayArray = [
         answer: 'C. Crash Bandicoot',
         clicked: false,
     },
-
-    comixZone = {
+    // comixZone
+    {
         question: 'A video game famous for traversing the pages of graphic novels in its gameplay.',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Teenage Mutant Ninja Turtles </button>',
         choiceInput1: 'A. Teenage Mutant Ninja Turtles',
@@ -148,8 +149,8 @@ var gamePlayArray = [
         answer: 'B. ComixZone',
         clicked: false,
     },
-
-    earthWormJim = {
+    // earthWormJim
+    {
         question: 'Can you name a galaxy crusading annelid taking on the evils of the universe?',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Earthworm Jim </button>',
         choiceInput1: 'A. Earthworm Jim',
@@ -166,8 +167,8 @@ var gamePlayArray = [
         answer: 'A. Earthworm Jim',
         clicked: false,
     },
-
-    masterChief = {
+    // masterChief
+    {
         question: 'What famous super soldier fought the covenant and the flood just for starters while protecting the planet earth?',
         choice1: '<button type="button" class="btn btn-outline-dark"> A. Tom Clancy </button>',
         choiceInput1: 'A. Tom Clancy',
@@ -184,8 +185,8 @@ var gamePlayArray = [
         answer: 'D. Master Chief',
         clicked: false,
     },
-
-    mortalCombat = {
+    // mortalCombat
+    {
         question: 'Name a famous video game series that not only was a great fighting game, but was famous for its finishing moves!',
         choice1: '<button type="button" class="btn btn-outline-dark d-flex justify-content-center"> A. Street Fighter </button>',
         choiceInput1: 'A. Street Fighter',
