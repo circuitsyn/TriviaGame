@@ -9,7 +9,8 @@
 }
 
 body, html {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     color: white;
     font-family: mainFont !important;
     opacity: 1;
@@ -28,7 +29,10 @@ body, html {
     background-size: cover;
 }
 
-
+#wrapper {
+    height: 100%;
+    width: 100%;
+}
 
 .mainArea {
     background-color: rgba(67, 176, 71, 0.9);

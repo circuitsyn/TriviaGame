@@ -12,65 +12,68 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-  <body class="bg">
-      
-    <div class="container mainArea text-center m-auto">
-        <div class="row">
-            <div class="col">
-                <h1>Video Game Trivia</h1>
+    <body class="bg">
+        <div id="wrapper">  
+            <div class="container mainArea text-center p-4 d-flex justify-content-center align-items-center">
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h1>Video Game Trivia</h1>
+                        </div>
+                    </div>
+            
+                    <!-- Main game Container Area -->
+                
+                    <!-- Welcome message and getting started button -->
+                    <div class="row">     
+                        <div class="col"> 
+                            <h5 id="startText" class="mt-4 mb-3">
+                                Welcome to Video Game Trivia! Get started by clicking the start button. Your questions will be timed, so don't go too slow and have fun!
+                            </h5>
+                            <button id="startbtn" type="button" class="btn btn-dark btn-lg">!Click - to - Start!</button>
+                        </div>
+                    </div>
+
+                    <!-- Questions Area -->
+                    <div class="row">
+                        <div class="col"> 
+                            <div id="question" class="query">
+                                
+                            </div>
+                            <div id="choiceA" class="options">
+                                
+                            </div>
+                            <div id="choiceB" class="options">
+                                
+                            </div>
+                            <div id="choiceC" class="options">
+                                
+                            </div>
+                            <div id="choiceD" class="options">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Time Section -->
+                    <div class="row">
+                        <div class="col">
+                            <div id="time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Main game Container Area -->
-        <div class="container">
-            <!-- Welcome message and getting started button -->
-            <div class="row">     
-                <div class="col"> 
-                    <h5 id="startText">
-                        Welcome to Video Game Trivia! Get started by clicking the start button. Your questions will be timed, so don't go too slow and have fun!
-                    </h5>
-                    <button id="startbtn" type="button" class="btn btn-dark btn-lg">!Click - to - Start!</button>
-                </div>
-            </div>
-
-            <!-- Questions Area -->
-            <div class="row">
-                <div class="col"> 
-                    <div id="question" class="query">
-                        
-                    </div>
-                    <div id="choiceA" class="options">
-                        
-                    </div>
-                    <div id="choiceB" class="options">
-                        
-                    </div>
-                    <div id="choiceC" class="options">
-                        
-                    </div>
-                    <div id="choiceD" class="options">
-                        
-                    </div>
-                </div>
-            </div>
-            <br>
-
-            <!-- Time Section -->
-            <div class="row">
-                <div class="col">
-                    <div id="time">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src="assets/javascript/app.js"> </script>
-  </body>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+        <script src="assets/javascript/app.js"> </script>
+    </body>
 </html>
