@@ -14,19 +14,18 @@ body, html {
     font-family: mainFont !important;
     opacity: 1;
     overflow-x: scroll;
-    font-size: 30px;
     word-spacing: 10px;
 }
 
 .bg {
-/*Background image:*/
-background-image: url("../images/background.png");
+    /*Background image:*/
+    background-image: url("../images/background.png");
 
- /* Full height */
- /* Center and scale the image nicely */
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
+    /* Full height */
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -34,25 +33,11 @@ background-image: url("../images/background.png");
 .mainArea {
     background-color: rgba(67, 176, 71, 0.9);
     border: solid white 2px;
-    border-radius: 25px;
-    /* height: 70%; */
-    /* opacity: 0.8; */
-    /* margin-top: 5%;
-    margin-left: 8%; */
-    
-}
-
-.title {
-    width: 100%;
+    border-radius: 25px;    
 }
 
 h1 {
     font-family: "titleFont";
-    text-align: center;
-    width: 100%;
-    font-size: 60px;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 /* Used to store result image style */
@@ -68,9 +53,4 @@ h1 {
 #startbtn:hover {
     font-weight: 100;
     border: solid white 2px;
-}
-
-button {
-    margin-top: 5px;
-    margin-bottom: 5px;
 }

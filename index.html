@@ -14,41 +14,47 @@
 </head>
   <body class="bg">
       
-    <div class="row container mainArea col-md-10 text-center m-auto">
-        <div class="row container">
+    <div class="container mainArea text-center m-auto">
+        <div class="row">
             <div class="title">
                 <h1>Video Game Trivia</h1>
             </div>
         </div>
 
         <!-- Main game Container Area -->
-        <div class="row container">
+        <div class="container">
             
-            <div>    
-                <button id="startbtn" type="button" class="btn btn-dark btn-lg">!Click - to - Start!</button>
-                <p id="startText">
+            <!-- Welcome message and getting started button -->
+            <div class="row">      
+                <h5 id="startText">
                     Welcome to Video Game Trivia! Get started by clicking the start button. Your questions will be timed, so don't go too slow and have fun!
-                </p>
+                </h5>
+                <button id="startbtn" type="button" class="btn btn-dark btn-lg">!Click - to - Start!</button>
             </div>
-            
-            <div id="question" class="row query container">
-                
-            </div>
-            <div id="choiceA" class="row options container">
-                
-            </div>
-            <div id="choiceB" class="row options container">
-                
-            </div>
-            <div id="choiceC" class="row options container">
-                
-            </div>
-            <div id="choiceD" class="row options container">
-                
+
+            <!-- Questions Area -->
+            <div class="row">
+                <div id="question" class="query">
+                    
+                </div>
+                <div id="choiceA" class="options">
+                    
+                </div>
+                <div id="choiceB" class="options">
+                    
+                </div>
+                <div id="choiceC" class="options">
+                    
+                </div>
+                <div id="choiceD" class="options">
+                    
+                </div>
             </div>
             <br>
-            <div id="time" class="row container">
-                
+
+            <!-- Time Section -->
+            <div class="row">
+                <div id="time">
             </div>
 
         </div>
