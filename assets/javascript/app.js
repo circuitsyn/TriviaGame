@@ -5,9 +5,9 @@ var gameVariables = {
     incorrect: 0,
     missed: 0,
     timeLeft: 30,
-    endImage: '<img class="images" src="../../assets/images/End.gif" alt="End of Game">',
+    endImage: '<img class="images" src="./assets/images/End.gif" alt="End of Game">',
     //method to push and track time left to make a choice
-    timer = () => {
+    timer: () => {
         console.log('timer working')
         if(!clockRunning){
         rate = setInterval(gameVariables.count, 1000);
@@ -15,7 +15,7 @@ var gameVariables = {
     }
     },
     
-    count = () => {
+    count: () => {
         gameVariables.timeLeft--; 
         $('#time').html('Time Remaining: ' + gameVariables.timeLeft + ' Seconds!');
 
@@ -24,7 +24,7 @@ var gameVariables = {
        
     
     //method to clear div's
-    clearDivs = () => {
+    clearDivs: () => {
         $('#question').empty();
         $('#choiceA').empty();
         $('#choiceB').empty();
@@ -34,7 +34,7 @@ var gameVariables = {
     },
     
     //Method to push question and choices from array
-    pushQ = () => {
+    pushQs: () => {
         $('#question').append(gamePlayArray[i].question);
         $('#choiceA').append(gamePlayArray[i].choice1);
         $('#choiceB').append(gamePlayArray[i].choice2);
@@ -43,21 +43,21 @@ var gameVariables = {
     },
 
     //Push wrong response screen
-    pushWrong = () => {
+    pushWrong: () => {
         $('#question').append(gamePlayArray[i].wrongAnswer);
         $('#choiceA').append("Time Left: " + gameVariables.timeLeft);
         $('#choiceB').append(gamePlayArray[i].gif);
     },
 
     //Push correct response screen
-    pushCorrect = () => {
+    pushCorrect: () => {
         $('#question').append(gamePlayArray[i].rightAnswer);
         $('#choiceA').append("Time Left: " + gameVariables.timeLeft)
         $('#choiceB').append(gamePlayArray[i].gif);
         
     },
 
-    pushResults = () => {
+    pushResults: () => {
         $('#question').append("Number Correct: " + gameVariables.correct);
         $('#choiceA').append("Number Incorrect: " + gameVariables.incorrect);
         $('#choiceB').append("Number Unanswered: " + gameVariables.missed);
@@ -65,7 +65,7 @@ var gameVariables = {
         
     },
 
-    pushMissed = () => {
+    pushMisse: () => {
         $('#question').append("You missed it! Let's try on the next Question!");
     }
         
@@ -207,10 +207,9 @@ var gamePlayArray = [
 ];
 
 // Start game on start button click
-
-
-$('#startbtn').click(async function(){
-
+$('#startbtn').click(function(e){
+    e.preventDefault();
+    console.log('hey');
     $('#startbtn').css({"display":"none"});
     $('#startText').css({"display":"none"});
     // gameVariables.timer();
@@ -229,7 +228,7 @@ $('#startbtn').click(async function(){
         
         
         //timer countdown
-        await gameVariables.timer();
+        gameVariables.timer();
         
         
         
