@@ -55,7 +55,7 @@ h1 {
     font-weight: bold;
 }
 
-#startbtn:hover {
+.btn-dark:hover {
     font-weight: 100;
     border: solid white 2px;
 }
