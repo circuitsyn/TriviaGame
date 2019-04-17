@@ -5,6 +5,7 @@ var gameVariables = {
     incorrect: 0,
     missed: 0,
     timeLeft: 30,
+    qCounter: 0,
     endImage: '<img class="images" src="./assets/images/End.gif" alt="End of Game">',
     //method to push and track time left to make a choice
     timer: () => {
@@ -21,7 +22,24 @@ var gameVariables = {
 
         console.log(gameVariables.timeLeft)
     },    
-       
+    
+    // logic for game
+    decide: () => {
+        //create check for end of time or buttons clicked
+        if ((gameVariables.timeLeft <= 0) || (gamePlayArray[i].clicked == true)) {
+            gameVariables.missed++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushMissed,3000);
+        }
+    
+        //question to reshow the the start button should the array finish after all is done
+        if ((gameVariables.correct + gameVariables.incorrect + gameVariables.missed) ==  (gamePlayArray.length-1)) {
+            gameVariables.clearDivs();
+            //brings start button back upon completion
+            $('#startbtn').css({"display":"block"});
+            $('#startText').css({"display":"block"});
+        }
+    },
     
     //method to clear div's
     clearDivs: () => {
@@ -35,11 +53,12 @@ var gameVariables = {
     
     //Method to push question and choices from array
     pushQs: () => {
-        $('#question').append(gamePlayArray[i].question);
-        $('#choiceA').append(gamePlayArray[i].choice1);
-        $('#choiceB').append(gamePlayArray[i].choice2);
-        $('#choiceC').append(gamePlayArray[i].choice3);
-        $('#choiceD').append(gamePlayArray[i].choice4);
+        $('#question').append(gamePlayArray[gameVariables.qCounter].question);
+        $('#choiceA').append(gamePlayArray[gameVariables.qCounter].choice1);
+        $('#choiceB').append(gamePlayArray[gameVariables.qCounter].choice2);
+        $('#choiceC').append(gamePlayArray[gameVariables.qCounter].choice3);
+        $('#choiceD').append(gamePlayArray[gameVariables.qCounter].choice4);
+        gameVariables.qCounter++;
     },
 
     //Push wrong response screen
@@ -65,7 +84,7 @@ var gameVariables = {
         
     },
 
-    pushMisse: () => {
+    pushMissed: () => {
         $('#question').append("You missed it! Let's try on the next Question!");
     }
         
@@ -206,22 +225,18 @@ var gamePlayArray = [
 
 ];
 
-// Start game on start button click
-$('#startbtn').click(function(e){
-    e.preventDefault();
-    console.log('hey');
-    $('#startbtn').css({"display":"none"});
-    $('#startText').css({"display":"none"});
-    // gameVariables.timer();
 
-    for (i = 0; i < gamePlayArray.length; i++) {
+$( document ).ready(function() {
+    // Start game on start button click
+    $('#startbtn').click(function(e){
+        e.preventDefault();
+        console.log('hey');
+        $('#startbtn').css({"display":"none"});
+        $('#startText').css({"display":"none"});
+        // gameVariables.timer();
+        
         //Clearing out Divs as precaution each time
-        console.log(i);
-        // console.log(gamePlayArray.length);
-        console.log(gamePlayArray[i]);
         gameVariables.clearDivs();
-        // console.log(i);
-        //push attribute section
         
         //push question details
         gameVariables.pushQs();
@@ -230,91 +245,78 @@ $('#startbtn').click(function(e){
         //timer countdown
         gameVariables.timer();
         
+    });
         
         
-        
-        //Clickable Button Section
-        $('#choiceA').click(function(i){
-            gamePlayArray.clicked = true;
-            if (gamePlayArray[i].choiceInput1 == gamePlayArray[i].answer) {
-                gameVariables.correct++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushCorrect,3000);
-            }
-            else {
-                gameVariables.incorrect++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushWrong,3000);
-                
-            }
-        });
-
-        $('#choiceB').click(function(i){
-            gamePlayArray.clicked = true;
-            if (gamePlayArray[i].choiceInput2 == gamePlayArray[i].answer) {
-                gameVariables.correct++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushCorrect,3000);
-            }
-            else {
-                gameVariables.incorrect++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushWrong,3000);
-            }
-        });
-
-        $('#choiceC').click(function(i){
-            gamePlayArray.clicked = true;
-            if (gamePlayArray[i].choiceInput3 == gamePlayArray[i].answer) {
-                gameVariables.correct++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushCorrect,3000);
-                
-            }
-            else {
-                gameVariables.incorrect++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushWrong,3000);
-            }
-        });
-
-        $('#choiceD').click(function(i){
-            gamePlayArray.clicked = true;
+    //Clickable Button Section
+    $('#choiceA').click(function(i){
+        gamePlayArray.clicked = true;
+        if (gamePlayArray[i].choiceInput1 == gamePlayArray[i].answer) {
             gameVariables.correct++;
-            
-            if (gamePlayArray[i].choiceInput4 == gamePlayArray[i].answer) {
-                gameVariables.correct++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushCorrect,3000);
-            }
-            else {
-                gameVariables.incorrect++;
-                gameVariables.clearDivs();
-                setTimeout(gameVariables.pushWrong,3000);
-            }
-            
-        });
-    
-        //create check for end of time or buttons clicked
-        if ((gameVariables.timeLeft <= 0) || (gamePlayArray[i].clicked == true)) {
-            gameVariables.missed++;
             gameVariables.clearDivs();
-            setTimeout(gameVariables.pushMissed,3000);
+            setTimeout(gameVariables.pushCorrect,3000);
+        }
+        else {
+            gameVariables.incorrect++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushWrong,3000);
+            
+        }
+    });
+
+    $('#choiceB').click(function(i){
+        gamePlayArray.clicked = true;
+        if (gamePlayArray[i].choiceInput2 == gamePlayArray[i].answer) {
+            gameVariables.correct++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushCorrect,3000);
+        }
+        else {
+            gameVariables.incorrect++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushWrong,3000);
+        }
+    });
+
+    $('#choiceC').click(function(i){
+        gamePlayArray.clicked = true;
+        if (gamePlayArray[i].choiceInput3 == gamePlayArray[i].answer) {
+            gameVariables.correct++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushCorrect,3000);
+            
+        }
+        else {
+            gameVariables.incorrect++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushWrong,3000);
+        }
+    });
+
+    $('#choiceD').click(function(i){
+        gamePlayArray.clicked = true;
+        gameVariables.correct++;
+        
+        if (gamePlayArray[i].choiceInput4 == gamePlayArray[i].answer) {
+            gameVariables.correct++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushCorrect,3000);
+        }
+        else {
+            gameVariables.incorrect++;
+            gameVariables.clearDivs();
+            setTimeout(gameVariables.pushWrong,3000);
         }
         
-        //question to reshow the the start button should the array finish after all is done
-        if ((gameVariables.correct + gameVariables.incorrect + gameVariables.missed) ==  (gamePlayArray.length-1)) {
-            gameVariables.clearDivs();
-            //brings start button back upon completion
-            $('#startbtn').css({"display":"block"});
-            $('#startText').css({"display":"block"});
-        }
-        
-    };
+    });
+
+    
+});  
     
     
     
- });
+    
+ 
 
 
 
