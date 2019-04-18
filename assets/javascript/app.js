@@ -50,15 +50,22 @@ var gameVariables = {
         $('#choiceD').empty();
         // $('#time').empty();
     },
-    
+    // <button type="button" class="btn btn-dark"> B. Buzby </button>
     //Method to push question and choices from array
     pushQs: () => {
-        $('#question').append(gamePlayArray[gameVariables.qCounter].question);
-        $('#choiceA').append(gamePlayArray[gameVariables.qCounter].choice1);
-        $('#choiceB').append(gamePlayArray[gameVariables.qCounter].choice2);
-        $('#choiceC').append(gamePlayArray[gameVariables.qCounter].choice3);
-        $('#choiceD').append(gamePlayArray[gameVariables.qCounter].choice4);
-        gameVariables.qCounter++;
+
+        let index = gameVariables.qCounter;
+        
+        // Append question text to question div
+        $("#question").text((gamePlayArray[index].question));
+
+        gamePlayArray[index].choices.forEach((choice) => {
+            let button = $("<button>", { "class": "btn btn-dark" });
+            $(button).text(choice);
+            $("#optionSelect").append(button);           
+        })
+
+        // gameVariables.qCounter++;
     },
 
     //Push wrong response screen
@@ -73,7 +80,6 @@ var gameVariables = {
         $('#question').append(gamePlayArray[i].rightAnswer);
         $('#choiceA').append("Time Left: " + gameVariables.timeLeft)
         $('#choiceB').append(gamePlayArray[i].gif);
-        
     },
 
     pushResults: () => {
@@ -81,7 +87,6 @@ var gameVariables = {
         $('#choiceA').append("Number Incorrect: " + gameVariables.incorrect);
         $('#choiceB').append("Number Unanswered: " + gameVariables.missed);
         $('#choiceC').append(gameVariables.endImage);
-        
     },
 
     pushMissed: () => {
@@ -98,14 +103,7 @@ var gamePlayArray = [
     // Sonic
     {
         question: 'Name a famous SEGA character that is ultra fast, was a flagship for the system and has over 100 titles to date!',
-        choice1: '<button type="button" class="btn btn-dark"> A. Purple Durple </button>',
-        choiceInput1: 'A. Purple Durple',
-        choice2: '<button type="button" class="btn btn-dark"> B. Buzby </button>',
-        choiceInput2: 'B. Buzby',
-        choice3: '<button type="button" class="btn btn-dark"> C. Sonic </button>',
-        choiceInput3: 'C. Sonic',
-        choice4: '<button type="button" class="btn btn-dark"> D. Tails </button>',
-        choiceInput4: 'D. Tails',
+        choices: ['A. Purple Durple', 'B. Buzby', 'C. Sonic', 'D. Tails'],
         rightAnswer: 'You got it right! Well done. The answer is Sonic!',
         wrongAnswer: 'You got it wrong! The correct answer is Sonic! You gotta be faster next time..!',
         gif: '<img class="images" src="../../assets/images/Sonic.gif" alt="Sonic The Hedgehog">',
@@ -226,11 +224,10 @@ var gamePlayArray = [
 ];
 
 
-$( document ).ready(function() {
+$(document).ready(function() {
     // Start game on start button click
     $('#startbtn').click(function(e){
         e.preventDefault();
-        console.log('hey');
         $('#startbtn').css({"display":"none"});
         $('#startText').css({"display":"none"});
         // gameVariables.timer();
