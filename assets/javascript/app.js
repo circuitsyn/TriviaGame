@@ -64,29 +64,35 @@ var gameVariables = {
         gameVariables.qCounter++;
     },
 
+    updateScore: () => {
+        $('#winBox').text(gameVariables.correct);
+        $('#lossBox').text(gameVariables.incorrect);
+        $('#remainingBox').text(gameVariables.missed);
+    },
+
     //Push wrong response screen
     pushWrong: () => {
-        $('#question').append(gamePlayArray[i].wrongAnswer);
-        $('#choiceA').append("Time Left: " + gameVariables.timeLeft);
-        $('#choiceB').append(gamePlayArray[i].gif);
+        $('#optionSelect').append(gamePlayArray[i].wrongAnswer);
+        $('#optionSelect').append("Time Left: " + gameVariables.timeLeft);
+        $('#optionSelect').append(gamePlayArray[i].gif);
     },
 
     //Push correct response screen
     pushCorrect: () => {
-        $('#question').append(gamePlayArray[i].rightAnswer);
-        $('#choiceA').append("Time Left: " + gameVariables.timeLeft)
-        $('#choiceB').append(gamePlayArray[i].gif);
+        $('#optionSelect').append(gamePlayArray[i].rightAnswer);
+        $('#optionSelect').append("Time Left: " + gameVariables.timeLeft)
+        $('#optionSelect').append(gamePlayArray[i].gif);
     },
 
     pushResults: () => {
-        $('#question').append("Number Correct: " + gameVariables.correct);
-        $('#choiceA').append("Number Incorrect: " + gameVariables.incorrect);
-        $('#choiceB').append("Number Unanswered: " + gameVariables.missed);
-        $('#choiceC').append(gameVariables.endImage);
+        $('#optionSelect').append("Number Correct: " + gameVariables.correct);
+        $('#optionSelect').append("Number Incorrect: " + gameVariables.incorrect);
+        $('#optionSelect').append("Number Unanswered: " + gameVariables.missed);
+        $('#optionSelect').append(gameVariables.endImage);
     },
 
     pushMissed: () => {
-        $('#question').append("You missed it! Let's try on the next Question!");
+        $('#optionSelect').append("You missed it! Let's try on the next Question!");
     }
         
     };
@@ -172,6 +178,10 @@ var gamePlayArray = [
 
 
 $(document).ready(function() {
+
+    // Setup Scores to Start
+    gameVariables.updateScore();
+
     // Start game on start button click
     $("#startbtn").click(function(e){
         e.preventDefault();
