@@ -43,11 +43,7 @@ var gameVariables = {
     
     //method to clear div's
     clearDivs: () => {
-        $('#question').empty();
-        $('#choiceA').empty();
-        $('#choiceB').empty();
-        $('#choiceC').empty();
-        $('#choiceD').empty();
+        $('#optionSelect').empty();
         // $('#time').empty();
     },
     // <button type="button" class="btn btn-dark"> B. Buzby </button>
@@ -55,17 +51,17 @@ var gameVariables = {
     pushQs: () => {
 
         let index = gameVariables.qCounter;
-        
+        gameVariables.clearDivs();
         // Append question text to question div
         $("#question").text((gamePlayArray[index].question));
 
         gamePlayArray[index].choices.forEach((choice) => {
-            let button = $("<button>", { "class": "btn btn-dark choices" });
+            let button = $("<button>", { "class": "choices btn btn-dark" });
             $(button).text(choice);
             $("#optionSelect").append(button);           
         })
 
-        // gameVariables.qCounter++;
+        gameVariables.qCounter++;
     },
 
     //Push wrong response screen
@@ -144,7 +140,7 @@ var gamePlayArray = [
     // earthWormJim
     {
         question: 'Can you name a galaxy crusading annelid taking on the evils of the universe?',
-        choices: ['A. Earthworm Jim', 'B. Earthworm Bob Barker', 'C. Earthworm Cypher', 'D. Galactic Earthworm Crusader'],
+        choices: ['A. Earthworm Jim', 'B. Bob Barker', 'C. Cypher', 'D. Galactic Earthworm Crusader'],
         rightAnswer: 'You got it right! Well done. The answer is Earthworm Jim!',
         wrongAnswer: 'You got it wrong! The correct answer is Earthworm Jim! Not so groovy!',
         gif: '<img class="images" src="./assets/images/earthwormJim.gif" alt="Earthworm Jim">',
@@ -177,7 +173,7 @@ var gamePlayArray = [
 
 $(document).ready(function() {
     // Start game on start button click
-    $('#startbtn').click(function(e){
+    $("#startbtn").click(function(e){
         e.preventDefault();
         $('#startbtn').css({"display":"none"});
         $('#startText').css({"display":"none"});
@@ -189,7 +185,6 @@ $(document).ready(function() {
         //push question details
         gameVariables.pushQs();
         
-        
         //timer countdown
         gameVariables.timer();
         
@@ -197,66 +192,71 @@ $(document).ready(function() {
         
         
     //Clickable Button Section
-    $('#choiceA').click(function(i){
-        gamePlayArray.clicked = true;
-        if (gamePlayArray[i].choiceInput1 == gamePlayArray[i].answer) {
-            gameVariables.correct++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushCorrect,3000);
-        }
-        else {
-            gameVariables.incorrect++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushWrong,3000);
+    $("#optionSelect").on("click", ".choices", function(e){
+        e.preventDefault();
+        console.log("I'm clicked!");
+        gameVariables.clockRunning = true;
+        gameVariables.pushQs();
+
+
+        // if (gamePlayArray[i].choiceInput1 == gamePlayArray[i].answer) {
+        //     gameVariables.correct++;
+        //     gameVariables.clearDivs();
+        //     setTimeout(gameVariables.pushCorrect,3000);
+        // }
+        // else {
+        //     gameVariables.incorrect++;
+        //     gameVariables.clearDivs();
+        //     setTimeout(gameVariables.pushWrong,3000);
             
-        }
+        // }
     });
 
-    $('#choiceB').click(function(i){
-        gamePlayArray.clicked = true;
-        if (gamePlayArray[i].choiceInput2 == gamePlayArray[i].answer) {
-            gameVariables.correct++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushCorrect,3000);
-        }
-        else {
-            gameVariables.incorrect++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushWrong,3000);
-        }
-    });
+    // $('#choiceB').click(function(i){
+    //     gamePlayArray.clicked = true;
+    //     if (gamePlayArray[i].choiceInput2 == gamePlayArray[i].answer) {
+    //         gameVariables.correct++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushCorrect,3000);
+    //     }
+    //     else {
+    //         gameVariables.incorrect++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushWrong,3000);
+    //     }
+    // });
 
-    $('#choiceC').click(function(i){
-        gamePlayArray.clicked = true;
-        if (gamePlayArray[i].choiceInput3 == gamePlayArray[i].answer) {
-            gameVariables.correct++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushCorrect,3000);
+    // $('#choiceC').click(function(i){
+    //     gamePlayArray.clicked = true;
+    //     if (gamePlayArray[i].choiceInput3 == gamePlayArray[i].answer) {
+    //         gameVariables.correct++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushCorrect,3000);
             
-        }
-        else {
-            gameVariables.incorrect++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushWrong,3000);
-        }
-    });
+    //     }
+    //     else {
+    //         gameVariables.incorrect++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushWrong,3000);
+    //     }
+    // });
 
-    $('#choiceD').click(function(i){
-        gamePlayArray.clicked = true;
-        gameVariables.correct++;
+    // $('#choiceD').click(function(i){
+    //     gamePlayArray.clicked = true;
+    //     gameVariables.correct++;
         
-        if (gamePlayArray[i].choiceInput4 == gamePlayArray[i].answer) {
-            gameVariables.correct++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushCorrect,3000);
-        }
-        else {
-            gameVariables.incorrect++;
-            gameVariables.clearDivs();
-            setTimeout(gameVariables.pushWrong,3000);
-        }
+    //     if (gamePlayArray[i].choiceInput4 == gamePlayArray[i].answer) {
+    //         gameVariables.correct++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushCorrect,3000);
+    //     }
+    //     else {
+    //         gameVariables.incorrect++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushWrong,3000);
+    //     }
         
-    });
+    // });
 
     
 });  
