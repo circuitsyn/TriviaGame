@@ -60,7 +60,7 @@ var gameVariables = {
         $("#question").text((gamePlayArray[index].question));
 
         gamePlayArray[index].choices.forEach((choice) => {
-            let button = $("<button>", { "class": "btn btn-dark" });
+            let button = $("<button>", { "class": "btn btn-dark choices" });
             $(button).text(choice);
             $("#optionSelect").append(button);           
         })
@@ -106,119 +106,70 @@ var gamePlayArray = [
         choices: ['A. Purple Durple', 'B. Buzby', 'C. Sonic', 'D. Tails'],
         rightAnswer: 'You got it right! Well done. The answer is Sonic!',
         wrongAnswer: 'You got it wrong! The correct answer is Sonic! You gotta be faster next time..!',
-        gif: '<img class="images" src="../../assets/images/Sonic.gif" alt="Sonic The Hedgehog">',
+        gif: '<img class="images" src="./assets/images/Sonic.gif" alt="Sonic The Hedgehog">',
         audio: '',
-        answer: 'C. Sonic',
-        clicked: false,
+        answer: 'C. Sonic'
         
     },
     // Mario
     {
         question: 'Name a famous Nintendo Character that is from a famous 2d side scoller and is always trying to rescue a princess!',
-        choice1: '<button type="button" class="btn btn-dark"> A. Mario </button>',
-        choiceInput1: 'A. Mario',
-        choice2: '<button type="button" class="btn btn-dark"> B. Donkey Kong </button>',
-        choiceInput2: 'B. Donkey Kong',
-        choice3: '<button type="button" class="btn btn-dark"> C. Spider-man </button>',
-        choiceInput3: 'C. Spider-man',
-        choice4: '<button type="button" class="btn btn-dark"> D. The Terminator </button>',
-        choiceInput4: 'D. The Terminator',
+        choices: ['A. Mario', 'B. Donkey Kong', 'C. Spider-man', 'D. The Terminator'],
         rightAnswer: 'You got it right! Well done. The answer is Mario!',
         wrongAnswer: 'You got it wrong! The correct answer is Mario! You gott abe faster next time..!',
-        gif: '<img class="images" src="../../assets/images/Mario.gif" alt="Mario">',
+        gif: '<img class="images" src="./assets/images/Mario.gif" alt="Mario">',
         audio: '',
-        answer: 'A. Mario',
-        clicked: false,
+        answer: 'A. Mario'
     },
     // Crash
     {
         question: 'What terrestrial marsupial would work through portals and spin in order to defeat the evil Dr. Neo Cortex!',
-        choice1: '<button type="button" class="btn btn-dark"> A. Pickle Rick </button>',
-        choiceInput1: 'A. Pickle Rick',
-        choice2: '<button type="button" class="btn btn-dark"> B. Donkey Kong </button>',
-        choiceInput2: 'B. Donkey Kong',
-        choice3: '<button type="button" class="btn btn-dark"> C. Crash Bandicoot </button>',
-        choiceInput3: 'C. Crash Bandicoot',
-        choice4: '<button type="button" class="btn btn-dark"> D. Toad </button>',
-        choiceInput4: 'D. Toad',
+        choices: ['A. Pickle Rick', 'B. Donkey Kong', 'C. Crash Bandicoot', 'D. Toad'],
         rightAnswer: 'You got it right! Well done. The answer is Crash Bandicoot!',
         wrongAnswer: 'You got it wrong! The correct answer is Crash Bandicoot! You gott abe faster next time..!',
-        gif: '<img class="images" src="../../assets/images/crashBandicoot.gif" alt="Crash Bandicoot">',
+        gif: '<img class="images" src="./assets/images/crashBandicoot.gif" alt="Crash Bandicoot">',
         audio: '',
-        answer: 'C. Crash Bandicoot',
-        clicked: false,
+        answer: 'C. Crash Bandicoot'
     },
     // comixZone
     {
         question: 'A video game famous for traversing the pages of graphic novels in its gameplay.',
-        choice1: '<button type="button" class="btn btn-dark"> A. Teenage Mutant Ninja Turtles </button>',
-        choiceInput1: 'A. Teenage Mutant Ninja Turtles',
-        choice2: '<button type="button" class="btn btn-dark"> B. ComixZone </button>',
-        choiceInput2: 'B. ComixZone',
-        choice3: '<button type="button" class="btn btn-dark"> C. Spider-man </button>',
-        choiceInput3: 'C. Spider-man',
-        choice4: '<button type="button" class="btn btn-dark"> D. Paperboy </button>',
-        choiceInput4: 'D. Paperboy',
+        choices: ['A. Teenage Mutant Ninja Turtles', 'B. ComixZone', 'C. Spider-man', 'D. Paperboy'],
         rightAnswer: 'You got it right! Well done. The answer is ComixZone!',
         wrongAnswer: 'You got it wrong! The correct answer is ComixZone! lets turn that page!',
-        gif: '<img class="images" src="../../assets/images/comixZone.gif" alt="Comix Zone">',
+        gif: '<img class="images" src="./assets/images/comixZone.gif" alt="Comix Zone">',
         audio: '',
-        answer: 'B. ComixZone',
-        clicked: false,
+        answer: 'B. ComixZone'
     },
     // earthWormJim
     {
         question: 'Can you name a galaxy crusading annelid taking on the evils of the universe?',
-        choice1: '<button type="button" class="btn btn-dark"> A. Earthworm Jim </button>',
-        choiceInput1: 'A. Earthworm Jim',
-        choice2: '<button type="button" class="btn btn-dark"> B. Earthworm Bob Barker </button>',
-        choiceInput2: 'B. Earthworm Bob Barker',
-        choice3: '<button type="button" class="btn btn-dark"> Earthworm Cypher </button>',
-        choiceInput3: 'C. Earthworm Cypher',
-        choice4: '<button type="button" class="btn btn-dark"> D. Galactic Earthworm Crusader </button>',
-        choiceInput4: 'D. Galactic Earthworm Crusader',
+        choices: ['A. Earthworm Jim', 'B. Earthworm Bob Barker', 'C. Earthworm Cypher', 'D. Galactic Earthworm Crusader'],
         rightAnswer: 'You got it right! Well done. The answer is Earthworm Jim!',
         wrongAnswer: 'You got it wrong! The correct answer is Earthworm Jim! Not so groovy!',
-        gif: '<img class="images" src="../../assets/images/earthwormJim.gif" alt="Earthworm Jim">',
+        gif: '<img class="images" src="./assets/images/earthwormJim.gif" alt="Earthworm Jim">',
         audio: '',
-        answer: 'A. Earthworm Jim',
-        clicked: false,
+        answer: 'A. Earthworm Jim'
     },
     // masterChief
     {
         question: 'What famous super soldier fought the covenant and the flood just for starters while protecting the planet earth?',
-        choice1: '<button type="button" class="btn btn-dark"> A. Tom Clancy </button>',
-        choiceInput1: 'A. Tom Clancy',
-        choice2: '<button type="button" class="btn btn-dark"> B. Logan </button>',
-        choiceInput2: 'B. Logan',
-        choice3: '<button type="button" class="btn btn-dark"> C. Batman </button>',
-        choiceInput3: 'C. Batman',
-        choice4: '<button type="button" class="btn btn-dark"> D. Master Chief </button>',
-        choiceInput4: 'D. Master Chief',
+        choices: ['A. Tom Clancy', 'B. Logan', 'C. Batman', 'D. Master Chief'],
         rightAnswer: 'You got it right! Well done. The answer is Master Chief!',
         wrongAnswer: 'You got it wrong! The correct answer is Master Chief! Better luck next time soldier!',
-        gif: '<img class="images" src="../../assets/images/masterChief.gif" alt="Master Chief">',
+        gif: '<img class="images" src="./assets/images/masterChief.gif" alt="Master Chief">',
         audio: '',
-        answer: 'D. Master Chief',
-        clicked: false,
+        answer: 'D. Master Chief'
     },
     // mortalCombat
     {
         question: 'Name a famous video game series that not only was a great fighting game, but was famous for its finishing moves!',
-        choice1: '<button type="button" class="btn btn-dark d-flex justify-content-center"> A. Street Fighter </button>',
-        choiceInput1: 'A. Street Fighter',
-        choice2: '<button type="button" class="btn btn-dark d-flex justify-content-center"> B. Mortal Combat </button>',
-        choiceInput2: 'B. Mortal Combat',
-        choice3: '<button type="button" class="btn btn-dark d-flex justify-content-center"> C. Marvel vs. Capcom </button>',
-        choiceInput3: 'C. Marvel vs. Capcom',
-        choice4: '<button type="button" class="btn btn-dark d-flex justify-content-center"> D. Battle Toads </button>',
-        choiceInput4: 'D. Battle Toads',
+        choices: ['A. Street Fighter', 'B. Mortal Combat', 'C. Marvel vs. Capcom', 'D. Battle Toads'],
         rightAnswer: 'You got it right! Well done. The answer is Mortal Combat!',
         wrongAnswer: 'You got it wrong! The correct answer is Mortal Combat! Finish Him!',
-        gif: '<img class="images" src="../../assets/images/mortalCombat.gif" alt="Mortal Combat">',
+        gif: '<img class="images" src="./assets/images/mortalCombat.gif" alt="Mortal Combat">',
         audio: '',
-        answer: 'B. Mortal Combat',
-        clicked: false,
+        answer: 'B. Mortal Combat'
     },
 
 ];
