@@ -1,4 +1,5 @@
 var rate;
+let index;
 var clockRunning = false;
 var gameVariables = {
     correct: 0,
@@ -52,7 +53,7 @@ var gameVariables = {
 
         let index = gameVariables.qCounter;
         gameVariables.clearDivs();
-        
+
         // Append question text to question div
         $("#question").text((gamePlayArray[index].question));
 
@@ -73,16 +74,16 @@ var gameVariables = {
 
     //Push wrong response screen
     pushWrong: () => {
-        $('#optionSelect').append(gamePlayArray[i].wrongAnswer);
+        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].wrongAnswer);
         $('#optionSelect').append("Time Left: " + gameVariables.timeLeft);
-        $('#optionSelect').append(gamePlayArray[i].gif);
+        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].gif);
     },
 
     //Push correct response screen
     pushCorrect: () => {
-        $('#optionSelect').append(gamePlayArray[i].rightAnswer);
+        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].rightAnswer);
         $('#optionSelect').append("Time Left: " + gameVariables.timeLeft)
-        $('#optionSelect').append(gamePlayArray[i].gif);
+        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].gif);
     },
 
     pushResults: () => {
@@ -232,7 +233,7 @@ $(document).ready(function() {
 });  
     
     
-    
+    // check how to add and maniplate index if should be global variable or localized
     
  
 
