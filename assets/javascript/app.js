@@ -12,7 +12,7 @@ var gameVariables = {
     timer: () => {
         console.log('timer working')
         if(!clockRunning){
-        rate = setInterval(gameVariables.count, 1000);
+        rate = setInterval(gameVariables.count(), 1000);
         clockRunning = true;
     }
     },
