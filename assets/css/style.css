@@ -73,3 +73,7 @@ h1 {
 .figure-caption {
     color: white;
 }
+
+.choices {
+    word-spacing: inherit;    
+}
