@@ -207,9 +207,6 @@ $(document).ready(function() {
         let index = gameVariables.qCounter;
         gameVariables.clockRunning = true;
         
-
-        console.log('chosenAns', chosenAns)
-        console.log('gamePlayArray[index].answer', gamePlayArray[index].answer)
         if (chosenAns == gamePlayArray[index].answer) {
             gameVariables.correct++;
             gameVariables.qCounter++;
@@ -226,8 +223,7 @@ $(document).ready(function() {
             gameVariables.clearDivs();
             gameVariables.pushWrong();
 
-            setTimeout(gameVariables.pushQs(),3000);
-            
+            setTimeout(gameVariables.pushQs(),3000);   
         }
     });
     
