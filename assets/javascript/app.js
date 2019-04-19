@@ -62,8 +62,6 @@ var gameVariables = {
             $(button).text(choice);
             $("#optionSelect").append(button);           
         })
-
-        gameVariables.qCounter++;
     },
 
     updateScore: () => {
@@ -210,9 +208,11 @@ $(document).ready(function() {
         gameVariables.clockRunning = true;
         
 
-
+        console.log('chosenAns', chosenAns)
+        console.log('gamePlayArray[index].answer', gamePlayArray[index].answer)
         if (chosenAns == gamePlayArray[index].answer) {
             gameVariables.correct++;
+            gameVariables.qCounter++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
             gameVariables.pushCorrect();
@@ -221,6 +221,7 @@ $(document).ready(function() {
         }
         else {
             gameVariables.incorrect++;
+            gameVariables.qCounter++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
             gameVariables.pushWrong();
