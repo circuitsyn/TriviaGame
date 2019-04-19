@@ -65,9 +65,11 @@ var gameVariables = {
     },
 
     updateScore: () => {
+        let reamining = (7 - gameVariables.correct - gameVariables.incorrect - gameVariables.missed)
         $('#winBox').text(gameVariables.correct);
         $('#lossBox').text(gameVariables.incorrect);
-        $('#remainingBox').text(gameVariables.missed);
+        $('#remainingBox').text(reamining);
+        $('#missBox').text(gameVariables.missed);
     },
 
     //Push wrong response screen
