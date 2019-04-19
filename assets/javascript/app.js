@@ -74,23 +74,32 @@ var gameVariables = {
 
     //Push wrong response screen
     pushWrong: () => {
-        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].wrongAnswer);
-        $('#optionSelect').append("Time Left: " + gameVariables.timeLeft);
-        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].gif);
+        $(".modal-header").empty();
+        $(".modal-body").empty();
+        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].wrongAnswer);
+        $('#modal-body').append("Time Left: " + gameVariables.timeLeft);
+        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].gif);
+        $("#infoModal").modal('show');
     },
 
     //Push correct response screen
     pushCorrect: () => {
-        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].rightAnswer);
-        $('#optionSelect').append("Time Left: " + gameVariables.timeLeft)
-        $('#optionSelect').append(gamePlayArray[gameVariables.qCounter].gif);
+        $(".modal-header").empty();
+        $(".modal-body").empty();
+        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].rightAnswer);
+        $('#modal-body').append("Time Left: " + gameVariables.timeLeft)
+        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].gif);
+        $("#infoModal").modal('show');
     },
 
     pushResults: () => {
-        $('#optionSelect').append("Number Correct: " + gameVariables.correct);
-        $('#optionSelect').append("Number Incorrect: " + gameVariables.incorrect);
-        $('#optionSelect').append("Number Unanswered: " + gameVariables.missed);
-        $('#optionSelect').append(gameVariables.endImage);
+        $(".modal-header").empty();
+        $(".modal-body").empty();
+        $('#modal-body').append("Number Correct: " + gameVariables.correct);
+        $('#modal-body').append("Number Incorrect: " + gameVariables.incorrect);
+        $('#modal-body').append("Number Unanswered: " + gameVariables.missed);
+        $('#modal-body').append(gameVariables.endImage);
+        $("#infoModal").modal('show');
     },
 
     pushMissed: () => {
