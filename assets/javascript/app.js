@@ -52,6 +52,7 @@ var gameVariables = {
 
         let index = gameVariables.qCounter;
         gameVariables.clearDivs();
+        
         // Append question text to question div
         $("#question").text((gamePlayArray[index].question));
 
@@ -96,8 +97,6 @@ var gameVariables = {
     }
         
     };
-
-
 
 //~~*~~*~~ Question Array Variables ~~*~~*~~
 
@@ -204,70 +203,31 @@ $(document).ready(function() {
     //Clickable Button Section
     $("#optionSelect").on("click", ".choices", function(e){
         e.preventDefault();
-        console.log("I'm clicked!");
+        // Capture value of clicked button
+        let chosenAns = $(this).text();
+        let index = gameVariables.qCounter;
         gameVariables.clockRunning = true;
-        gameVariables.pushQs();
+        
 
 
-        // if (gamePlayArray[i].choiceInput1 == gamePlayArray[i].answer) {
-        //     gameVariables.correct++;
-        //     gameVariables.clearDivs();
-        //     setTimeout(gameVariables.pushCorrect,3000);
-        // }
-        // else {
-        //     gameVariables.incorrect++;
-        //     gameVariables.clearDivs();
-        //     setTimeout(gameVariables.pushWrong,3000);
+        if (chosenAns == gamePlayArray[index].answer) {
+            gameVariables.correct++;
+            gameVariables.updateScore();
+            gameVariables.clearDivs();
+            gameVariables.pushCorrect();
             
-        // }
+            setTimeout(gameVariables.pushQs(),3000);
+        }
+        else {
+            gameVariables.incorrect++;
+            gameVariables.updateScore();
+            gameVariables.clearDivs();
+            gameVariables.pushWrong();
+
+            setTimeout(gameVariables.pushQs(),3000);
+            
+        }
     });
-
-    // $('#choiceB').click(function(i){
-    //     gamePlayArray.clicked = true;
-    //     if (gamePlayArray[i].choiceInput2 == gamePlayArray[i].answer) {
-    //         gameVariables.correct++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushCorrect,3000);
-    //     }
-    //     else {
-    //         gameVariables.incorrect++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushWrong,3000);
-    //     }
-    // });
-
-    // $('#choiceC').click(function(i){
-    //     gamePlayArray.clicked = true;
-    //     if (gamePlayArray[i].choiceInput3 == gamePlayArray[i].answer) {
-    //         gameVariables.correct++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushCorrect,3000);
-            
-    //     }
-    //     else {
-    //         gameVariables.incorrect++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushWrong,3000);
-    //     }
-    // });
-
-    // $('#choiceD').click(function(i){
-    //     gamePlayArray.clicked = true;
-    //     gameVariables.correct++;
-        
-    //     if (gamePlayArray[i].choiceInput4 == gamePlayArray[i].answer) {
-    //         gameVariables.correct++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushCorrect,3000);
-    //     }
-    //     else {
-    //         gameVariables.incorrect++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushWrong,3000);
-    //     }
-        
-    // });
-
     
 });  
     
