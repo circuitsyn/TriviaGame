@@ -239,8 +239,9 @@ $(document).ready(function() {
     });
     
 });  
-    
-    
+    TODO:
+    // check sequence of modal pushing
+    // check to see if you want to add button to close for different functionality (prob best)
     // check how to add and maniplate index if should be global variable or localized
     
  
