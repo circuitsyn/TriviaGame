@@ -2,6 +2,8 @@ var rate;
 let index;
 var clockRunning = false;
 var gameVariables = {
+    wrongMsg: "You got it wrong. You gotta be faster next time..! The correct answer is ",
+    correctMsg: "You got it right! Well done. The answer is ",
     correct: 0,
     incorrect: 0,
     missed: 0,
@@ -45,9 +47,12 @@ var gameVariables = {
     //method to clear div's
     clearDivs: () => {
         $('#optionSelect').empty();
+        $("#modalTitle").empty();
+        $("#modalBody").empty();
+        $("#modalFooter").empty();
         // $('#time').empty();
     },
-    // <button type="button" class="btn btn-dark"> B. Buzby </button>
+
     //Method to push question and choices from array
     pushQs: () => {
 
@@ -74,31 +79,49 @@ var gameVariables = {
 
     //Push wrong response screen
     pushWrong: () => {
-        $(".modal-header").empty();
-        $(".modal-body").empty();
-        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].wrongAnswer);
-        $('#modal-body').append("Time Left: " + gameVariables.timeLeft);
-        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].gif);
+
+        // build next button
+        let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+            $(infoButton).text("Next Q");
+            $("#modalFooter").append(infoButton);    
+
+        // Append Data
+        $("#modalTitle").text("Guessed Wrong!");
+        $('#modalBody').append(gameVariables.wrongMsg);
+        $('#modalBody').append("Time Left: " + gameVariables.timeLeft);
+        $('#modalBody').append(gamePlayArray[gameVariables.qCounter].gif);
         $("#infoModal").modal('show');
     },
 
     //Push correct response screen
     pushCorrect: () => {
-        $(".modal-header").empty();
-        $(".modal-body").empty();
-        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].rightAnswer);
-        $('#modal-body').append("Time Left: " + gameVariables.timeLeft)
-        $('#modal-body').append(gamePlayArray[gameVariables.qCounter].gif);
+
+        // build next button
+        let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+            $(infoButton).text("Next Q");
+            $("#modalFooter").append(infoButton);   
+
+        // Append Data
+        $("#modalTitle").text("Guessed Correct!");
+        $('#modalBody').append(gameVariables.correctMsg);
+        $('#modalBody').append("Time Left: " + gameVariables.timeLeft)
+        $('#modalBody').append(gamePlayArray[gameVariables.qCounter].gif);
         $("#infoModal").modal('show');
     },
 
     pushResults: () => {
-        $(".modal-header").empty();
-        $(".modal-body").empty();
-        $('#modal-body').append("Number Correct: " + gameVariables.correct);
-        $('#modal-body').append("Number Incorrect: " + gameVariables.incorrect);
-        $('#modal-body').append("Number Unanswered: " + gameVariables.missed);
-        $('#modal-body').append(gameVariables.endImage);
+
+        // build next button
+        let infoResultButton = $("<button>", { "id": "playAgainBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+            $(infoResultButton).text("Play Again!");
+            $("#modalFooter").append(infoResultButton);  
+
+        // Append Data
+        $("#modalTitle").text("Final Results!");
+        $('#modalBody').append("Number Correct: " + gameVariables.correct);
+        $('#modalBody').append("Number Incorrect: " + gameVariables.incorrect);
+        $('#modalBody').append("Number Unanswered: " + gameVariables.missed);
+        $('#modalBody').append(gameVariables.endImage);
         $("#infoModal").modal('show');
     },
 
@@ -115,8 +138,6 @@ var gamePlayArray = [
     {
         question: 'Name a famous SEGA character that is ultra fast, was a flagship for the system and has over 100 titles to date!',
         choices: ['A. Purple Durple', 'B. Buzby', 'C. Sonic', 'D. Tails'],
-        rightAnswer: 'You got it right! Well done. The answer is Sonic!',
-        wrongAnswer: 'You got it wrong! The correct answer is Sonic! You gotta be faster next time..!',
         gif: '<img class="images" src="./assets/images/Sonic.gif" alt="Sonic The Hedgehog">',
         audio: '',
         answer: 'C. Sonic'
@@ -126,8 +147,6 @@ var gamePlayArray = [
     {
         question: 'Name a famous Nintendo Character that is from a famous 2d side scoller and is always trying to rescue a princess!',
         choices: ['A. Mario', 'B. Donkey Kong', 'C. Spider-man', 'D. The Terminator'],
-        rightAnswer: 'You got it right! Well done. The answer is Mario!',
-        wrongAnswer: 'You got it wrong! The correct answer is Mario! You gott abe faster next time..!',
         gif: '<img class="images" src="./assets/images/Mario.gif" alt="Mario">',
         audio: '',
         answer: 'A. Mario'
@@ -136,8 +155,6 @@ var gamePlayArray = [
     {
         question: 'What terrestrial marsupial would work through portals and spin in order to defeat the evil Dr. Neo Cortex!',
         choices: ['A. Pickle Rick', 'B. Donkey Kong', 'C. Crash Bandicoot', 'D. Toad'],
-        rightAnswer: 'You got it right! Well done. The answer is Crash Bandicoot!',
-        wrongAnswer: 'You got it wrong! The correct answer is Crash Bandicoot! You gott abe faster next time..!',
         gif: '<img class="images" src="./assets/images/crashBandicoot.gif" alt="Crash Bandicoot">',
         audio: '',
         answer: 'C. Crash Bandicoot'
@@ -146,8 +163,6 @@ var gamePlayArray = [
     {
         question: 'A video game famous for traversing the pages of graphic novels in its gameplay.',
         choices: ['A. Teenage Mutant Ninja Turtles', 'B. ComixZone', 'C. Spider-man', 'D. Paperboy'],
-        rightAnswer: 'You got it right! Well done. The answer is ComixZone!',
-        wrongAnswer: 'You got it wrong! The correct answer is ComixZone! lets turn that page!',
         gif: '<img class="images" src="./assets/images/comixZone.gif" alt="Comix Zone">',
         audio: '',
         answer: 'B. ComixZone'
@@ -156,8 +171,6 @@ var gamePlayArray = [
     {
         question: 'Can you name a galaxy crusading annelid taking on the evils of the universe?',
         choices: ['A. Earthworm Jim', 'B. Bob Barker', 'C. Cypher', 'D. Galactic Earthworm Crusader'],
-        rightAnswer: 'You got it right! Well done. The answer is Earthworm Jim!',
-        wrongAnswer: 'You got it wrong! The correct answer is Earthworm Jim! Not so groovy!',
         gif: '<img class="images" src="./assets/images/earthwormJim.gif" alt="Earthworm Jim">',
         audio: '',
         answer: 'A. Earthworm Jim'
@@ -166,8 +179,6 @@ var gamePlayArray = [
     {
         question: 'What famous super soldier fought the covenant and the flood just for starters while protecting the planet earth?',
         choices: ['A. Tom Clancy', 'B. Logan', 'C. Batman', 'D. Master Chief'],
-        rightAnswer: 'You got it right! Well done. The answer is Master Chief!',
-        wrongAnswer: 'You got it wrong! The correct answer is Master Chief! Better luck next time soldier!',
         gif: '<img class="images" src="./assets/images/masterChief.gif" alt="Master Chief">',
         audio: '',
         answer: 'D. Master Chief'
@@ -176,8 +187,6 @@ var gamePlayArray = [
     {
         question: 'Name a famous video game series that not only was a great fighting game, but was famous for its finishing moves!',
         choices: ['A. Street Fighter', 'B. Mortal Combat', 'C. Marvel vs. Capcom', 'D. Battle Toads'],
-        rightAnswer: 'You got it right! Well done. The answer is Mortal Combat!',
-        wrongAnswer: 'You got it wrong! The correct answer is Mortal Combat! Finish Him!',
         gif: '<img class="images" src="./assets/images/mortalCombat.gif" alt="Mortal Combat">',
         audio: '',
         answer: 'B. Mortal Combat'
@@ -224,18 +233,29 @@ $(document).ready(function() {
             gameVariables.updateScore();
             gameVariables.clearDivs();
             gameVariables.pushCorrect();
-            
-            setTimeout(gameVariables.pushQs(),3000);
         }
         else {
             gameVariables.incorrect++;
             gameVariables.qCounter++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
-            gameVariables.pushWrong();
-
-            setTimeout(gameVariables.pushQs(),3000);   
+            gameVariables.pushWrong(); 
         }
+    });
+
+    // Reset Play Again Button
+    $("#playAgainBtn").on("click", ".choices", function(e){
+        e.preventDefault();
+        $("#infoModal").modal('hide');
+        console.log('lets go again!');
+    });
+
+    // Reset PLay Again Button
+    $("#nextQBtn").on("click", ".choices", function(e){
+        e.preventDefault();
+        gameVariables.pushQs();
+        $("#infoModal").modal('hide');
+        console.log('Next Q!');
     });
     
 });  

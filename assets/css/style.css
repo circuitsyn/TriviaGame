@@ -62,7 +62,7 @@ h1 {
 
 #winBox, #lossBox, #remainingBox, #missBox {
     background-image: url("../images/box.jpg");
-    background-size: contain;
+    background-size: cover;
     height: 60px;
     width: 60px;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.2);
