@@ -77,3 +77,23 @@ h1 {
 .choices {
     word-spacing: inherit;    
 }
+
+/* Modal Styling */
+.modal-content {
+    background-color: rgba(67, 176, 71, 1);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.2);
+    border: solid white 2px;
+    border-radius: 5px;
+}
+
+.close {
+    color: black;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}

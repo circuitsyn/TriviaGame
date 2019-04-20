@@ -65,7 +65,7 @@ var gameVariables = {
     },
 
     updateScore: () => {
-        let reamining = (7 - gameVariables.correct - gameVariables.incorrect - gameVariables.missed)
+        let reamining = (gamePlayArray.length - gameVariables.correct - gameVariables.incorrect - gameVariables.missed)
         $('#winBox').text(gameVariables.correct);
         $('#lossBox').text(gameVariables.incorrect);
         $('#remainingBox').text(reamining);
@@ -239,7 +239,7 @@ $(document).ready(function() {
     });
     
 });  
-    TODO:
+    
     // check sequence of modal pushing
     // check to see if you want to add button to close for different functionality (prob best)
     // check how to add and maniplate index if should be global variable or localized
