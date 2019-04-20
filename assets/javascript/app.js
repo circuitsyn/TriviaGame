@@ -2,7 +2,7 @@ var rate;
 let index;
 var clockRunning = false;
 var gameVariables = {
-    wrongMsg: "You got it wrong. You gotta be faster next time..! The correct answer is ",
+    wrongMsg: "You got it wrong. You gotta be faster next time! The correct answer is ",
     correctMsg: "You got it right! Well done. The answer is ",
     correct: 0,
     incorrect: 0,
@@ -48,7 +48,9 @@ var gameVariables = {
     clearDivs: () => {
         $('#optionSelect').empty();
         $("#modalTitle").empty();
-        $("#modalBody").empty();
+        $("#modalMsg").empty();
+        $("#modalImg").empty();
+        $("#modalTime").empty();
         $("#modalFooter").empty();
         // $('#time').empty();
     },
@@ -82,15 +84,15 @@ var gameVariables = {
 
         // build next button
         let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoButton).text("Next Q");
+            $(infoButton).text("Next Qestion");
             $("#modalFooter").append(infoButton);    
 
         // Append Data
         $("#modalTitle").text("Guessed Wrong!");
-        $('#modalBody').append(gameVariables.wrongMsg);
-        $('#modalBody').append("Time Left: " + gameVariables.timeLeft);
-        $('#modalBody').append(gamePlayArray[gameVariables.qCounter].gif);
-        $("#infoModal").modal('show');
+        $('#modalMsg').append(gameVariables.wrongMsg + "\"" + gamePlayArray[gameVariables.qCounter].answer + "\"!");
+        $('#modalTime').append("Time Left: " + gameVariables.timeLeft);
+        $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
+        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
     },
 
     //Push correct response screen
@@ -103,10 +105,10 @@ var gameVariables = {
 
         // Append Data
         $("#modalTitle").text("Guessed Correct!");
-        $('#modalBody').append(gameVariables.correctMsg);
-        $('#modalBody').append("Time Left: " + gameVariables.timeLeft)
-        $('#modalBody').append(gamePlayArray[gameVariables.qCounter].gif);
-        $("#infoModal").modal('show');
+        $('#modalMsg').append(gameVariables.correctMsg + "\"" +  gamePlayArray[gameVariables.qCounter].answer + "\"!");
+        $('#modalTime').append("Time Left: " + gameVariables.timeLeft)
+        $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
+        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
     },
 
     pushResults: () => {
@@ -121,7 +123,7 @@ var gameVariables = {
         $('#modalBody').append("Number Correct: " + gameVariables.correct);
         $('#modalBody').append("Number Incorrect: " + gameVariables.incorrect);
         $('#modalBody').append("Number Unanswered: " + gameVariables.missed);
-        $('#modalBody').append(gameVariables.endImage);
+        $('#modalImg').append(gameVariables.endImage);
         $("#infoModal").modal('show');
     },
 
@@ -229,17 +231,17 @@ $(document).ready(function() {
         
         if (chosenAns == gamePlayArray[index].answer) {
             gameVariables.correct++;
-            gameVariables.qCounter++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
             gameVariables.pushCorrect();
+            gameVariables.qCounter++;
         }
         else {
             gameVariables.incorrect++;
-            gameVariables.qCounter++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
-            gameVariables.pushWrong(); 
+            gameVariables.pushWrong();
+            gameVariables.qCounter++;
         }
     });
 
@@ -255,12 +257,11 @@ $(document).ready(function() {
         e.preventDefault();
         gameVariables.pushQs();
         $("#infoModal").modal('hide');
-        console.log('Next Q!');
     });
     
 });  
     
-    // check sequence of modal pushing
+    
     // check to see if you want to add button to close for different functionality (prob best)
     // check how to add and maniplate index if should be global variable or localized
     

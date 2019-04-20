@@ -49,7 +49,7 @@ h1 {
 .images {
     border: solid white 2px;
     border-radius: 5px;
-    width: auto;
+    max-width: 95%;
 }
 
 #startbtn {
