@@ -251,7 +251,7 @@ $(document).ready(function() {
     });
 
     // Reset PLay Again Button
-    $("#nextQBtn").on("click", ".choices", function(e){
+    $("#modalFooter").on("click", "#nextQBtn", function(e){
         e.preventDefault();
         gameVariables.pushQs();
         $("#infoModal").modal('hide');
