@@ -1,7 +1,7 @@
-var rate;
+let rate;
 let index;
-var clockRunning = false;
-var gameVariables = {
+let clockRunning = false;
+let gameVariables = {
     wrongMsg: "You got it wrong. You gotta be faster next time! The correct answer is ",
     correctMsg: "You got it right! Well done. The answer is ",
     correct: 0,
@@ -10,38 +10,65 @@ var gameVariables = {
     timeLeft: 30,
     qCounter: 0,
     endImage: '<img class="images" src="./assets/images/End.gif" alt="End of Game">',
+
     //method to push and track time left to make a choice
-    timer: () => {
+    startTimer: () => {
         console.log('timer working')
         if(!clockRunning){
-        rate = setInterval(gameVariables.count(), 1000);
-        clockRunning = true;
-    }
+        rate = setInterval(gameVariables.count, 1000);
+        // clockRunning = true;
+        }
     },
-    
+
     count: () => {
-        gameVariables.timeLeft--; 
+        gameVariables.timeLeft--;
         $('#time').html('Time Remaining: ' + gameVariables.timeLeft + ' Seconds!');
+
+        // check if value is 0 to end turn
+        if (gameVariables.timeLeft == 0) {
+            gameVariables.stopTimer();
+        }
+        
 
         console.log(gameVariables.timeLeft)
     },    
-    
+
+    // stop timer function
+    stopTimer: () => {
+        clearInterval(rate);
+    },
+
     // logic for game
-    decide: () => {
-        //create check for end of time or buttons clicked
-        if ((gameVariables.timeLeft <= 0) || (gamePlayArray[i].clicked == true)) {
-            gameVariables.missed++;
+    decide: (chosenAns, index) => {
+
+        if (chosenAns == gamePlayArray[index].answer) {
+            gameVariables.correct++;
+            gameVariables.updateScore();
             gameVariables.clearDivs();
-            setTimeout(gameVariables.pushMissed,3000);
+            gameVariables.pushCorrect();
+            gameVariables.qCounter++;
         }
+        else {
+            gameVariables.incorrect++;
+            gameVariables.updateScore();
+            gameVariables.clearDivs();
+            gameVariables.pushWrong();
+            gameVariables.qCounter++;
+        }
+    //     //create check for end of time or buttons clicked
+    //     if ((gameVariables.timeLeft <= 0) || (gamePlayArray[i].clicked == true)) {
+    //         gameVariables.missed++;
+    //         gameVariables.clearDivs();
+    //         setTimeout(gameVariables.pushMissed,3000);
+    //     }
     
-        //question to reshow the the start button should the array finish after all is done
-        if ((gameVariables.correct + gameVariables.incorrect + gameVariables.missed) ==  (gamePlayArray.length-1)) {
-            gameVariables.clearDivs();
-            //brings start button back upon completion
-            $('#startbtn').css({"display":"block"});
-            $('#startText').css({"display":"block"});
-        }
+    //     //question to reshow the the start button should the array finish after all is done
+    //     if ((gameVariables.correct + gameVariables.incorrect + gameVariables.missed) ==  (gamePlayArray.length-1)) {
+    //         gameVariables.clearDivs();
+    //         //brings start button back upon completion
+    //         $('#startbtn').css({"display":"block"});
+    //         $('#startText').css({"display":"block"});
+    //     }
     },
     
     //method to clear div's
@@ -88,7 +115,7 @@ var gameVariables = {
             $("#modalFooter").append(infoButton);    
 
         // Append Data
-        $("#modalTitle").text("Guessed Wrong!");
+        $("#modalTitle").text("Incorrect!");
         $('#modalMsg').append(gameVariables.wrongMsg + "\"" + gamePlayArray[gameVariables.qCounter].answer + "\"!");
         $('#modalTime').append("Time Left: " + gameVariables.timeLeft);
         $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
@@ -104,7 +131,7 @@ var gameVariables = {
             $("#modalFooter").append(infoButton);   
 
         // Append Data
-        $("#modalTitle").text("Guessed Correct!");
+        $("#modalTitle").text("Correct!");
         $('#modalMsg').append(gameVariables.correctMsg + "\"" +  gamePlayArray[gameVariables.qCounter].answer + "\"!");
         $('#modalTime').append("Time Left: " + gameVariables.timeLeft)
         $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
@@ -216,7 +243,7 @@ $(document).ready(function() {
         gameVariables.pushQs();
         
         //timer countdown
-        gameVariables.timer();
+        gameVariables.startTimer();
         
     });
         
@@ -228,21 +255,8 @@ $(document).ready(function() {
         let chosenAns = $(this).text();
         let index = gameVariables.qCounter;
         gameVariables.clockRunning = true;
+        gameVariables.decide(chosenAns, index);
         
-        if (chosenAns == gamePlayArray[index].answer) {
-            gameVariables.correct++;
-            gameVariables.updateScore();
-            gameVariables.clearDivs();
-            gameVariables.pushCorrect();
-            gameVariables.qCounter++;
-        }
-        else {
-            gameVariables.incorrect++;
-            gameVariables.updateScore();
-            gameVariables.clearDivs();
-            gameVariables.pushWrong();
-            gameVariables.qCounter++;
-        }
     });
 
     // Reset Play Again Button
