@@ -27,6 +27,7 @@ let gameVariables = {
         // check if value is 0 to end turn
         if (gameVariables.timeLeft == 0) {
             gameVariables.stopTimer();
+            gameVariables.pushMissed();
         }
         
 
@@ -111,7 +112,7 @@ let gameVariables = {
 
         // build next button
         let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoButton).text("Next Qestion");
+            $(infoButton).text("Next Question");
             $("#modalFooter").append(infoButton);    
 
         // Append Data
@@ -127,7 +128,7 @@ let gameVariables = {
 
         // build next button
         let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoButton).text("Next Q");
+            $(infoButton).text("Next Question");
             $("#modalFooter").append(infoButton);   
 
         // Append Data
@@ -155,7 +156,8 @@ let gameVariables = {
     },
 
     pushMissed: () => {
-        $('#optionSelect').append("You missed it! Let's try on the next Question!");
+        $("#modalTitle").text("Correct!");
+        $('#modalMsg').append("You missed it! Let's try on the next Question!");
     }
         
     };
