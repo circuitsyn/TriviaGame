@@ -156,8 +156,17 @@ let gameVariables = {
     },
 
     pushMissed: () => {
-        $("#modalTitle").text("Correct!");
+        // build next button
+        let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+            $(infoButton).text("Next Question");
+            $("#modalFooter").append(infoButton);    
+
+        // Append Data
+        $("#modalTitle").text("Missed!");
         $('#modalMsg').append("You missed it! Let's try on the next Question!");
+        $('#modalTime').append("Time Left: " + gameVariables.timeLeft);
+        $('#modalImg').html('<img class="images" src="./assets/images/missed.gif" alt="luigi missed"></img>');
+        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
     }
         
     };
