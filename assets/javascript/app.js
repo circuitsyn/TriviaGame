@@ -7,7 +7,7 @@ let gameVariables = {
     correct: 0,
     incorrect: 0,
     missed: 0,
-    timeLeft: 30,
+    timeLeft: 2,
     qCounter: 0,
     endImage: '<img class="images" src="./assets/images/End.gif" alt="End of Game">',
 
@@ -27,7 +27,9 @@ let gameVariables = {
         // check if value is 0 to end turn
         if (gameVariables.timeLeft == 0) {
             gameVariables.stopTimer();
+            gameVariables.clearDivs();
             gameVariables.pushMissed();
+            gameVariables.qCounter++;
         }
         
 
@@ -46,12 +48,14 @@ let gameVariables = {
             gameVariables.correct++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
+            gameVariables.stopTimer();
             gameVariables.pushCorrect();
             gameVariables.qCounter++;
         }
         else {
             gameVariables.incorrect++;
             gameVariables.updateScore();
+            gameVariables.stopTimer();
             gameVariables.clearDivs();
             gameVariables.pushWrong();
             gameVariables.qCounter++;
@@ -157,9 +161,13 @@ let gameVariables = {
 
     pushMissed: () => {
         // build next button
-        let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoButton).text("Next Question");
-            $("#modalFooter").append(infoButton);    
+        let infoMissButton = $("<button>", { "id": "nextQBtnMiss", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button"});
+            $(infoMissButton).text("Next Question");
+            $("#modalFooter").append(infoMissButton);    
+
+
+        gameVariables.missed++;
+        gameVariables.updateScore();
 
         // Append Data
         $("#modalTitle").text("Missed!");
@@ -169,7 +177,7 @@ let gameVariables = {
         $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
     }
         
-    };
+};
 
 //~~*~~*~~ Question Array Variables ~~*~~*~~
 
@@ -277,15 +285,28 @@ $(document).ready(function() {
         console.log('lets go again!');
     });
 
-    // Reset PLay Again Button
+    // Reset Play Again Button
     $("#modalFooter").on("click", "#nextQBtn", function(e){
         e.preventDefault();
         gameVariables.pushQs();
+        gameVariables.startTimer()
         $("#infoModal").modal('hide');
+        // reset timer
+        gameVariables.timeLeft = 30;
+    });
+
+    // Reset Play Again Button
+    $("#modalFooter").on("click", "#nextQBtnMiss", function(e){
+        e.preventDefault();
+        gameVariables.pushQs();
+        $("#infoModal").modal('hide');
+        gameVariables.startTimer()
+        // reset timer
+        gameVariables.timeLeft = 30;
     });
     
 });  
-    
+
     
     // check to see if you want to add button to close for different functionality (prob best)
     // check how to add and maniplate index if should be global variable or localized
