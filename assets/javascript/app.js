@@ -198,17 +198,17 @@ let gameVariables = {
         $("#modalBody").html(`
             <div class="container">
                 <div class="row text-center">
-                    <div class="col-3 m-2">
+                    <div class="col-4">
                         <h2 id="missBoxResult" class="m-auto p-1">
                         </h2>
                         <figcaption class="figure-caption text-center">Miss</figcaption>
                     </div>
-                    <div class="col-3 m-2">
+                    <div class="col-4">
                         <h2 id="lossBoxResult" class="m-auto p-1">  
                         </h2>
                         <figcaption class="figure-caption text-center">Lose</figcaption>
                     </div>
-                    <div class="col-3 m-2">
+                    <div class="col-4">
                         <h2 id="winBoxResult" class="m-auto p-1">
                         </h2>
                         <figcaption class="figure-caption text-center">Win</figcaption>
@@ -365,8 +365,7 @@ $(document).ready(function() {
 });  
 
     
-    // check to see if you want to add button to close for different functionality (prob best)
-    // check how to add and maniplate index if should be global variable or localized
+    // work on reset button and figure out whi picture isnt appending properly
     
  
 
