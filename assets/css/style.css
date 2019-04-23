@@ -41,6 +41,11 @@ body, html {
     border-radius: 5px;
 }
 
+/* Shadow for Text */
+.txtShadow {
+    text-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 h1 {
     font-family: "titleFont";
 }
@@ -50,6 +55,8 @@ h1 {
     border: solid white 2px;
     border-radius: 5px;
     max-width: 95%;
+    height: 50vh; 
+    background-color: white;
 }
 
 #startbtn {

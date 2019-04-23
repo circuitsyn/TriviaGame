@@ -100,7 +100,8 @@ let gameVariables = {
 
     //Push wrong response screen
     pushWrong: () => {
-
+        console.log('qcounter: ', gameVariables.qCounter);
+        console.log('length - 1: ', gamePlayArray.length - 1);
         // check to see if there are no more questions and push toward the results page
         if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
             console.log('qcounter: ', gameVariables.qCounter);
@@ -129,6 +130,8 @@ let gameVariables = {
     pushCorrect: () => {
 
         // check to see if there are no more questions and push toward the results page
+        console.log('qcounter: ', gameVariables.qCounter);
+            console.log('length - 1: ', gamePlayArray.length - 1);
         if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
             console.log('qcounter: ', gameVariables.qCounter);
             console.log('length - 1: ', gamePlayArray.length - 1);
@@ -154,7 +157,8 @@ let gameVariables = {
 
     // function to build the missed modal components and trigger it
     pushMissed: () => {
-
+        console.log('qcounter: ', gameVariables.qCounter);
+        console.log('length - 1: ', gamePlayArray.length - 1);
         // check to see if there are no more questions and push toward the results page
         if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
             console.log('qcounter: ', gameVariables.qCounter);
@@ -183,12 +187,12 @@ let gameVariables = {
     },
 
     // Method to push results modal and details
-    pushResults: (infoResultButton) => {
+    pushResults: () => {
 
-        // build next button
-        let infoResultButton = $("<button>", { "id": "playAgainBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoResultButton).text("Play Again!");
-            $("#modalFooter").append(infoResultButton);  
+        // build restart button
+        let resetButton = $("<button>", { "id": "playAgainBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+            $(resetButton).text("Play Again!");
+            $("#modalFooter").append(resetButton);  
 
         // Append Data
         $("#modalTitle").text("Final Results!");
@@ -302,15 +306,16 @@ $(document).ready(function() {
         e.preventDefault();
         $("#infoModal").modal('hide');
 
+        //Clearing out Divs as precaution each time
+        gameVariables.clearDivs();
+        console.log('lets go again!');
+
         // reset game variables
         gameVariables.qCounter = 0;
         gameVariables.timeLeft = 30;
         $('#startbtn').css({"display":"unset"});
         $('#startText').css({"display":"unset"});
         
-        //Clearing out Divs as precaution each time
-        gameVariables.clearDivs();
-        console.log('lets go again!');
     });
 
     // Next question button click logic
@@ -322,22 +327,12 @@ $(document).ready(function() {
         // reset timer
         gameVariables.timeLeft = 30;
     });
-
-    // Reset Play Again Button
-    // $("#modalFooter").on("click", "#nextQBtnMiss", function(e){
-    //     e.preventDefault();
-    //     gameVariables.pushQs();
-    //     $("#infoModal").modal('hide');
-    //     gameVariables.startTimer()
-    //     // reset timer
-    //     gameVariables.timeLeft = 30;
-    // });
     
     // Results button logic
     $("#modalFooter").on("click", "#resultBtn", function(e){
         e.preventDefault();
         console.log('results button clicked!');
-        $("#infoModal").modal('hide');
+        // $("#infoModal").modal('hide');
         gameVariables.clearDivs();
         gameVariables.pushResults();
         
