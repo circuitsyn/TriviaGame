@@ -43,15 +43,16 @@ let gameVariables = {
 
     // logic for game
     decide: (chosenAns, index) => {
-
+        // Checking of answer is correct
         if (chosenAns == gamePlayArray[index].answer) {
             gameVariables.correct++;
             gameVariables.updateScore();
             gameVariables.clearDivs();
             gameVariables.stopTimer();
             gameVariables.pushCorrect();
-            gameVariables.qCounter++;
+            gameVariables.qCounter++;   
         }
+        // Actions to take if wrong
         else {
             gameVariables.incorrect++;
             gameVariables.updateScore();
@@ -60,20 +61,6 @@ let gameVariables = {
             gameVariables.pushWrong();
             gameVariables.qCounter++;
         }
-    //     //create check for end of time or buttons clicked
-    //     if ((gameVariables.timeLeft <= 0) || (gamePlayArray[i].clicked == true)) {
-    //         gameVariables.missed++;
-    //         gameVariables.clearDivs();
-    //         setTimeout(gameVariables.pushMissed,3000);
-    //     }
-    
-    //     //question to reshow the the start button should the array finish after all is done
-    //     if ((gameVariables.correct + gameVariables.incorrect + gameVariables.missed) ==  (gamePlayArray.length-1)) {
-    //         gameVariables.clearDivs();
-    //         //brings start button back upon completion
-    //         $('#startbtn').css({"display":"block"});
-    //         $('#startText').css({"display":"block"});
-    //     }
     },
     
     //method to clear div's
@@ -103,6 +90,7 @@ let gameVariables = {
         })
     },
 
+    // function to update score attributes in the floating mario boxes
     updateScore: () => {
         let reamining = (gamePlayArray.length - gameVariables.correct - gameVariables.incorrect - gameVariables.missed)
         $('#winBox').text(gameVariables.correct);
@@ -114,36 +102,89 @@ let gameVariables = {
     //Push wrong response screen
     pushWrong: () => {
 
-        // build next button
-        let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoButton).text("Next Question");
-            $("#modalFooter").append(infoButton);    
+        // check to see if there are no more questions and push toward the results page
+        if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
+            console.log('qcounter: ', gameVariables.qCounter);
+            console.log('length - 1: ', gamePlayArray.length - 1);
+            let infoResultButton = $("<button>", { "id": "resultBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+                $(infoResultButton).text("Results");
+                $("#modalFooter").append(infoResultButton);    
+        }
+        else {
+            console.log('else button')
+            // build next button
+            let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+                $(infoButton).text("Next Question");
+                $("#modalFooter").append(infoButton);    
+        }
 
         // Append Data
         $("#modalTitle").text("Incorrect!");
         $('#modalMsg').append(gameVariables.wrongMsg + "\"" + gamePlayArray[gameVariables.qCounter].answer + "\"!");
         $('#modalTime').append("Time Left: " + gameVariables.timeLeft);
         $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
-        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
+        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });  
     },
 
     //Push correct response screen
     pushCorrect: () => {
 
-        // build next button
-        let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
-            $(infoButton).text("Next Question");
-            $("#modalFooter").append(infoButton);   
+        // check to see if there are no more questions and push toward the results page
+        if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
+            console.log('qcounter: ', gameVariables.qCounter);
+            console.log('length - 1: ', gamePlayArray.length - 1);
+            let infoResultButton = $("<button>", { "id": "resultBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+                $(infoResultButton).text("Results");
+                $("#modalFooter").append(infoResultButton);    
+        }
+        else {
+            
+            // build next button
+            let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+                $(infoButton).text("Next Question");
+                $("#modalFooter").append(infoButton);   
+        }
 
         // Append Data
         $("#modalTitle").text("Correct!");
         $('#modalMsg').append(gameVariables.correctMsg + "\"" +  gamePlayArray[gameVariables.qCounter].answer + "\"!");
         $('#modalTime').append("Time Left: " + gameVariables.timeLeft)
         $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
+        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });  
+    },
+
+    // function to build the missed modal components and trigger it
+    pushMissed: () => {
+
+        // check to see if there are no more questions and push toward the results page
+        if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
+            console.log('qcounter: ', gameVariables.qCounter);
+            console.log('length - 1: ', gamePlayArray.length - 1);
+            let infoResultButton = $("<button>", { "id": "resultBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+                $(infoResultButton).text("Results");
+                $("#modalFooter").append(infoResultButton);    
+        }
+        else {
+
+            // build next button
+            let infoMissButton = $("<button>", { "id": "nextQBtnMiss", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button"});
+                $(infoMissButton).text("Next Question");
+                $("#modalFooter").append(infoMissButton);    
+        }
+
+        gameVariables.missed++;
+        gameVariables.updateScore();
+
+        // Append Data
+        $("#modalTitle").text("Missed!");
+        $('#modalMsg').append("You missed it! Let's try on the next Question!");
+        $('#modalTime').append("Time Left: " + gameVariables.timeLeft);
+        $('#modalImg').html('<img class="images" src="./assets/images/missed.gif" alt="luigi missed"></img>');
         $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
     },
 
-    pushResults: () => {
+    // Method to push results modal and details
+    pushResults: (infoResultButton) => {
 
         // build next button
         let infoResultButton = $("<button>", { "id": "playAgainBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
@@ -157,26 +198,7 @@ let gameVariables = {
         $('#modalBody').append("Number Unanswered: " + gameVariables.missed);
         $('#modalImg').append(gameVariables.endImage);
         $("#infoModal").modal('show');
-    },
-
-    pushMissed: () => {
-        // build next button
-        let infoMissButton = $("<button>", { "id": "nextQBtnMiss", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button"});
-            $(infoMissButton).text("Next Question");
-            $("#modalFooter").append(infoMissButton);    
-
-
-        gameVariables.missed++;
-        gameVariables.updateScore();
-
-        // Append Data
-        $("#modalTitle").text("Missed!");
-        $('#modalMsg').append("You missed it! Let's try on the next Question!");
-        $('#modalTime').append("Time Left: " + gameVariables.timeLeft);
-        $('#modalImg').html('<img class="images" src="./assets/images/missed.gif" alt="luigi missed"></img>');
-        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
-    }
-        
+    },  
 };
 
 //~~*~~*~~ Question Array Variables ~~*~~*~~
