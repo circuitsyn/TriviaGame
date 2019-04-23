@@ -196,21 +196,23 @@ let gameVariables = {
 
         // Attach asthetic looking boxes for results
         $("#modalBody").html(`
-            <div class="scoreArea m-2">
-                <div class="m-2">
-                    <h2 id="missBoxResult" class="m-0 p-1">
-                    </h2>
-                    <figcaption class="figure-caption text-center">Miss</figcaption>
-                </div>
-                <div class="m-2">
-                    <h2 id="lossBoxResult" class="m-0 p-1">  
-                    </h2>
-                    <figcaption class="figure-caption text-center">Lose</figcaption>
-                </div>
-                <div class="m-2">
-                    <h2 id="winBoxResult" class="m-0 p-1">
-                    </h2>
-                    <figcaption class="figure-caption text-center">Win</figcaption>
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-4 m-2">
+                        <h2 id="missBoxResult" class="m-0 p-1">
+                        </h2>
+                        <figcaption class="figure-caption text-center">Miss</figcaption>
+                    </div>
+                    <div class="col-4 m-2">
+                        <h2 id="lossBoxResult" class="m-0 p-1">  
+                        </h2>
+                        <figcaption class="figure-caption text-center">Lose</figcaption>
+                    </div>
+                    <div class="col-4 m-2">
+                        <h2 id="winBoxResult" class="m-0 p-1">
+                        </h2>
+                        <figcaption class="figure-caption text-center">Win</figcaption>
+                    </div>
                 </div>
             </div>        
         `);
@@ -221,7 +223,7 @@ let gameVariables = {
         $('#winBoxResult').text(gameVariables.correct);
         $('#lossBoxResult').text(gameVariables.incorrect);
         $('#missBoxResult').text(gameVariables.missed);
-        $('#modalImg').append(gameVariables.endImage);
+        $('#modalImg').html(gameVariables.endImage);
         $("#infoModal").modal('show');
     },  
 };

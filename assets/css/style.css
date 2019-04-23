@@ -68,7 +68,7 @@ h1 {
     border: solid white 2px;
 }
 
-#winBox, #lossBox, #remainingBox, #missBox {
+#winBox, #lossBox, #remainingBox, #missBox, #missBoxResult, #lossBoxResult, #winBoxResult  {
     background-image: url("../images/box.jpg");
     background-size: cover;
     height: 60px;
