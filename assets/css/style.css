@@ -54,8 +54,8 @@ h1 {
 .images {
     border: solid white 2px;
     border-radius: 5px;
-    max-width: 95%;
-    height: 50vh; 
+    width: 100%;
+    height: auto; 
     background-color: white;
 }
 

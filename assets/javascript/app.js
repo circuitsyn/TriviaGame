@@ -9,7 +9,7 @@ let gameVariables = {
     missed: 0,
     timeLeft: 2,
     qCounter: 0,
-    endImage: '<img class="images" src="./assets/images/End.gif" alt="End of Game">',
+    endImage: '<img class="images mb-3" src="./assets/images/End.gif" alt="End of Game">',
 
     //method to push and track time left to make a choice
     startTimer: () => {
@@ -65,6 +65,8 @@ let gameVariables = {
     //method to clear div's
     clearDivs: () => {
         $('#optionSelect').empty();
+        $('#question').empty();
+        $('#time').empty();
         $("#modalTitle").empty();
         $("#modalMsg").empty();
         $("#modalImg").empty();
@@ -198,6 +200,11 @@ let gameVariables = {
         $("#modalBody").html(`
             <div class="container">
                 <div class="row text-center">
+                    <div id="finalImg" class="col-12">
+
+                    </div>
+                </div>
+                <div class="row text-center">
                     <div class="col-4">
                         <h2 id="missBoxResult" class="m-auto p-1">
                         </h2>
@@ -217,13 +224,12 @@ let gameVariables = {
             </div>        
         `);
 
-
         // Append Data
         $("#modalTitle").text("Final Results!");
+        $('#finalImg').append(gameVariables.endImage);
         $('#winBoxResult').text(gameVariables.correct);
         $('#lossBoxResult').text(gameVariables.incorrect);
         $('#missBoxResult').text(gameVariables.missed);
-        $('#modalImg').html(gameVariables.endImage);
         $("#infoModal").modal('show');
     },  
 };
@@ -356,7 +362,6 @@ $(document).ready(function() {
     $("#modalFooter").on("click", "#resultBtn", function(e){
         e.preventDefault();
         console.log('results button clicked!');
-        // $("#infoModal").modal('hide');
         gameVariables.clearDivs();
         gameVariables.pushResults();
         
