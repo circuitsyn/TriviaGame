@@ -197,19 +197,19 @@ let gameVariables = {
         // Attach asthetic looking boxes for results
         $("#modalBody").html(`
             <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-4 m-2">
-                        <h2 id="missBoxResult" class="m-0 p-1">
+                <div class="row text-center">
+                    <div class="col-3 m-2">
+                        <h2 id="missBoxResult" class="m-auto p-1">
                         </h2>
                         <figcaption class="figure-caption text-center">Miss</figcaption>
                     </div>
-                    <div class="col-4 m-2">
-                        <h2 id="lossBoxResult" class="m-0 p-1">  
+                    <div class="col-3 m-2">
+                        <h2 id="lossBoxResult" class="m-auto p-1">  
                         </h2>
                         <figcaption class="figure-caption text-center">Lose</figcaption>
                     </div>
-                    <div class="col-4 m-2">
-                        <h2 id="winBoxResult" class="m-0 p-1">
+                    <div class="col-3 m-2">
+                        <h2 id="winBoxResult" class="m-auto p-1">
                         </h2>
                         <figcaption class="figure-caption text-center">Win</figcaption>
                     </div>
