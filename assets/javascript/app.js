@@ -194,11 +194,33 @@ let gameVariables = {
             $(resetButton).text("Play Again!");
             $("#modalFooter").append(resetButton);  
 
+        // Attach asthetic looking boxes for results
+        $("#modalBody").html(`
+            <div class="scoreArea m-2">
+                <div class="m-2">
+                    <h2 id="missBoxResult" class="m-0 p-1">
+                    </h2>
+                    <figcaption class="figure-caption text-center">Miss</figcaption>
+                </div>
+                <div class="m-2">
+                    <h2 id="lossBoxResult" class="m-0 p-1">  
+                    </h2>
+                    <figcaption class="figure-caption text-center">Lose</figcaption>
+                </div>
+                <div class="m-2">
+                    <h2 id="winBoxResult" class="m-0 p-1">
+                    </h2>
+                    <figcaption class="figure-caption text-center">Win</figcaption>
+                </div>
+            </div>        
+        `);
+
+
         // Append Data
         $("#modalTitle").text("Final Results!");
-        $('#modalBody').append("Number Correct: " + gameVariables.correct);
-        $('#modalBody').append("Number Incorrect: " + gameVariables.incorrect);
-        $('#modalBody').append("Number Unanswered: " + gameVariables.missed);
+        $('#winBoxResult').text(gameVariables.correct);
+        $('#lossBoxResult').text(gameVariables.incorrect);
+        $('#missBoxResult').text(gameVariables.missed);
         $('#modalImg').append(gameVariables.endImage);
         $("#infoModal").modal('show');
     },  
