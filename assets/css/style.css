@@ -15,7 +15,7 @@ body, html {
     font-family: mainFont !important;
     opacity: 1;
     word-spacing: 10px;
-    position: relative;
+    position: relative; 
 }
 
 .bg {

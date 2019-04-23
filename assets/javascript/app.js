@@ -31,9 +31,6 @@ let gameVariables = {
             gameVariables.pushMissed();
             gameVariables.qCounter++;
         }
-        
-
-        console.log(gameVariables.timeLeft)
     },    
 
     // stop timer function
@@ -43,6 +40,7 @@ let gameVariables = {
 
     // logic for game
     decide: (chosenAns, index) => {
+
         // Checking of answer is correct
         if (chosenAns == gamePlayArray[index].answer) {
             gameVariables.correct++;
@@ -52,6 +50,7 @@ let gameVariables = {
             gameVariables.pushCorrect();
             gameVariables.qCounter++;   
         }
+    
         // Actions to take if wrong
         else {
             gameVariables.incorrect++;
@@ -167,7 +166,7 @@ let gameVariables = {
         else {
 
             // build next button
-            let infoMissButton = $("<button>", { "id": "nextQBtnMiss", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button"});
+            let infoMissButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button"});
                 $(infoMissButton).text("Next Question");
                 $("#modalFooter").append(infoMissButton);    
         }
@@ -270,12 +269,12 @@ $(document).ready(function() {
     // Setup Scores to Start
     gameVariables.updateScore();
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Clickable Button Logic Section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Start game on start button click
     $("#startbtn").click(function(e){
         e.preventDefault();
         $('#startbtn').css({"display":"none"});
         $('#startText').css({"display":"none"});
-        // gameVariables.timer();
         
         //Clearing out Divs as precaution each time
         gameVariables.clearDivs();
@@ -288,8 +287,7 @@ $(document).ready(function() {
         
     });
         
-        
-    //Clickable Button Section
+    // Button choice click logic
     $("#optionSelect").on("click", ".choices", function(e){
         e.preventDefault();
         // Capture value of clicked button
@@ -297,17 +295,25 @@ $(document).ready(function() {
         let index = gameVariables.qCounter;
         gameVariables.clockRunning = true;
         gameVariables.decide(chosenAns, index);
-        
     });
 
-    // Reset Play Again Button
+    // Reset play again button logic
     $("#playAgainBtn").on("click", ".choices", function(e){
         e.preventDefault();
         $("#infoModal").modal('hide');
+
+        // reset game variables
+        gameVariables.qCounter = 0;
+        gameVariables.timeLeft = 30;
+        $('#startbtn').css({"display":"unset"});
+        $('#startText').css({"display":"unset"});
+        
+        //Clearing out Divs as precaution each time
+        gameVariables.clearDivs();
         console.log('lets go again!');
     });
 
-    // Reset Play Again Button
+    // Next question button click logic
     $("#modalFooter").on("click", "#nextQBtn", function(e){
         e.preventDefault();
         gameVariables.pushQs();
@@ -318,15 +324,25 @@ $(document).ready(function() {
     });
 
     // Reset Play Again Button
-    $("#modalFooter").on("click", "#nextQBtnMiss", function(e){
-        e.preventDefault();
-        gameVariables.pushQs();
-        $("#infoModal").modal('hide');
-        gameVariables.startTimer()
-        // reset timer
-        gameVariables.timeLeft = 30;
-    });
+    // $("#modalFooter").on("click", "#nextQBtnMiss", function(e){
+    //     e.preventDefault();
+    //     gameVariables.pushQs();
+    //     $("#infoModal").modal('hide');
+    //     gameVariables.startTimer()
+    //     // reset timer
+    //     gameVariables.timeLeft = 30;
+    // });
     
+    // Results button logic
+    $("#modalFooter").on("click", "#resultBtn", function(e){
+        e.preventDefault();
+        console.log('results button clicked!');
+        $("#infoModal").modal('hide');
+        gameVariables.clearDivs();
+        gameVariables.pushResults();
+        
+    });
+
 });  
 
     
