@@ -102,12 +102,10 @@ let gameVariables = {
 
     //Push wrong response screen
     pushWrong: () => {
-        console.log('qcounter: ', gameVariables.qCounter);
-        console.log('length - 1: ', gamePlayArray.length - 1);
+
         // check to see if there are no more questions and push toward the results page
         if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
-            console.log('qcounter: ', gameVariables.qCounter);
-            console.log('length - 1: ', gamePlayArray.length - 1);
+            
             let infoResultButton = $("<button>", { "id": "resultBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
                 $(infoResultButton).text("Results");
                 $("#modalFooter").append(infoResultButton);    
@@ -132,11 +130,8 @@ let gameVariables = {
     pushCorrect: () => {
 
         // check to see if there are no more questions and push toward the results page
-        console.log('qcounter: ', gameVariables.qCounter);
-            console.log('length - 1: ', gamePlayArray.length - 1);
         if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
-            console.log('qcounter: ', gameVariables.qCounter);
-            console.log('length - 1: ', gamePlayArray.length - 1);
+            
             let infoResultButton = $("<button>", { "id": "resultBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
                 $(infoResultButton).text("Results");
                 $("#modalFooter").append(infoResultButton);    
@@ -159,12 +154,10 @@ let gameVariables = {
 
     // function to build the missed modal components and trigger it
     pushMissed: () => {
-        console.log('qcounter: ', gameVariables.qCounter);
-        console.log('length - 1: ', gamePlayArray.length - 1);
+
         // check to see if there are no more questions and push toward the results page
         if (gameVariables.qCounter == (gamePlayArray.length - 1)) {
-            console.log('qcounter: ', gameVariables.qCounter);
-            console.log('length - 1: ', gamePlayArray.length - 1);
+            
             let infoResultButton = $("<button>", { "id": "resultBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
                 $(infoResultButton).text("Results");
                 $("#modalFooter").append(infoResultButton);    
@@ -332,20 +325,25 @@ $(document).ready(function() {
     });
 
     // Reset play again button logic
-    $("#playAgainBtn").on("click", ".choices", function(e){
+    $("#modalFooter").on("click", "#playAgainBtn", function(e){
         e.preventDefault();
         $("#infoModal").modal('hide');
 
         //Clearing out Divs as precaution each time
         gameVariables.clearDivs();
         console.log('lets go again!');
-
+        
         // reset game variables
+        gameVariables.missed = 0;
+        gameVariables.correct = 0;
+        gameVariables.incorrect = 0;
+        $('#remainingBox').text(gamePlayArray.length);
         gameVariables.qCounter = 0;
         gameVariables.timeLeft = 30;
-        $('#startbtn').css({"display":"unset"});
-        $('#startText').css({"display":"unset"});
-        
+        gameVariables.updateScore();
+        $('#startbtn').css({"display":"block"});
+        $('#startText').css({"display":"block"});
+        console.log('gvar: ', gameVariables);
     });
 
     // Next question button click logic
@@ -370,7 +368,7 @@ $(document).ready(function() {
 });  
 
     
-    // work on reset button and figure out whi picture isnt appending properly
+    // missed alt language on missed item
     
  
 
