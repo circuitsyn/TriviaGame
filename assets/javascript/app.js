@@ -355,8 +355,7 @@ $(document).ready(function() {
     $("#modalFooter").on("click", "#resultBtn", function(e){
         e.preventDefault();
         gameVariables.clearDivs();
-        gameVariables.pushResults();
-        
+        gameVariables.pushResults();  
     });
 
 });  
