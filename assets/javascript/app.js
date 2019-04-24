@@ -13,10 +13,8 @@ let gameVariables = {
 
     //method to push and track time left to make a choice
     startTimer: () => {
-        console.log('timer working')
         if(!clockRunning){
         rate = setInterval(gameVariables.count, 1000);
-        // clockRunning = true;
         }
     },
 
@@ -111,7 +109,6 @@ let gameVariables = {
                 $("#modalFooter").append(infoResultButton);    
         }
         else {
-            console.log('else button')
             // build next button
             let infoButton = $("<button>", { "id": "nextQBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
                 $(infoButton).text("Next Question");
@@ -331,7 +328,6 @@ $(document).ready(function() {
 
         //Clearing out Divs as precaution each time
         gameVariables.clearDivs();
-        console.log('lets go again!');
         
         // reset game variables
         gameVariables.missed = 0;
@@ -343,7 +339,6 @@ $(document).ready(function() {
         gameVariables.updateScore();
         $('#startbtn').css({"display":"block"});
         $('#startText').css({"display":"block"});
-        console.log('gvar: ', gameVariables);
     });
 
     // Next question button click logic
@@ -359,7 +354,6 @@ $(document).ready(function() {
     // Results button logic
     $("#modalFooter").on("click", "#resultBtn", function(e){
         e.preventDefault();
-        console.log('results button clicked!');
         gameVariables.clearDivs();
         gameVariables.pushResults();
         
