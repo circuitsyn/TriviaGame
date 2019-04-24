@@ -7,7 +7,7 @@ let gameVariables = {
     correct: 0,
     incorrect: 0,
     missed: 0,
-    timeLeft: 2,
+    timeLeft: 30,
     qCounter: 0,
     endImage: '<img class="images mb-3" src="./assets/images/End.gif" alt="End of Game">',
 
