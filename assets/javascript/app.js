@@ -85,7 +85,7 @@ let gameVariables = {
         $("#question").text((gamePlayArray[index].question));
 
         gamePlayArray[index].choices.forEach((choice) => {
-            let button = $("<button>", { "class": "choices btn btn-dark" });
+            let button = $("<button>", { "class": "m-2 choices btn btn-dark" });
             $(button).text(choice);
             $("#optionSelect").append(button);           
         })

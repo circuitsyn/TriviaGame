@@ -9,8 +9,8 @@
 }
 
 body, html {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     color: white;
     font-family: mainFont !important;
     opacity: 1;
@@ -54,8 +54,8 @@ h1 {
 .images {
     border: solid white 2px;
     border-radius: 5px;
-    width: 100%;
-    height: auto; 
+    max-width: 100%;
+    height: 20rem; 
     background-color: white;
 }
 
