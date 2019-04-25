@@ -204,19 +204,19 @@ let gameVariables = {
                 </div>
                 <div class="row text-center">
                     <div class="col-4">
-                        <h2 id="missBoxResult" class="resultBox m-auto p-2">
+                        <h2 id="missBoxResult" class="m-auto p-2">
                         </h2>
-                        <figcaption class="resultCap figure-caption text-center">Miss</figcaption>
+                        <figcaption id="capRes1" class="figure-caption text-center">Miss</figcaption>
                     </div>
                     <div class="col-4">
-                        <h2 id="lossBoxResult" class="resultBox m-auto p-2">  
+                        <h2 id="lossBoxResult" class="m-auto p-2">  
                         </h2>
-                        <figcaption class="resultCap figure-caption text-center">Lose</figcaption>
+                        <figcaption id="capRes2" class="figure-caption text-center">Lose</figcaption>
                     </div>
                     <div class="col-4">
-                        <h2 id="winBoxResult" class="resultBox m-auto p-2">
+                        <h2 id="winBoxResult" class="m-auto p-2">
                         </h2>
-                        <figcaption class="resultCap figure-caption text-center">Win</figcaption>
+                        <figcaption id="capRes3" class="figure-caption text-center">Win</figcaption>
                     </div>
                 </div>
             </div>        
@@ -229,8 +229,12 @@ let gameVariables = {
         $('#lossBoxResult').text(gameVariables.incorrect);
         $('#missBoxResult').text(gameVariables.missed);
         $("#infoModal").modal('show');
-        gameVariables.animateCSS(".resultCap", "slideInLeft");
-        gameVariables.animateCSS(".resultBox", "slideInLeft");
+        gameVariables.animateCSS("#capRes1", "slideInLeft");
+        gameVariables.animateCSS("#capRes2", "slideInLeft");
+        gameVariables.animateCSS("#capRes3", "slideInLeft");
+        gameVariables.animateCSS("#winBoxResult", "slideInLeft");
+        gameVariables.animateCSS("#lossBoxResult", "slideInLeft");
+        gameVariables.animateCSS("#missBoxResult", "slideInLeft");
     },  
 
     // function used to animate objects
@@ -353,8 +357,12 @@ $(document).ready(function() {
     // Reset play again button logic
     $("#modalFooter").on("click", "#playAgainBtn", function(e){
         e.preventDefault();
-        gameVariables.animateCSS(".resultCap", "slideOutRight");
-        gameVariables.animateCSS(".resultBox", "slideOutRight");
+        gameVariables.animateCSS("#capRes1", "slideOutRight");
+        gameVariables.animateCSS("#capRes2", "slideOutRight");
+        gameVariables.animateCSS("#capRes3", "slideOutRight");
+        gameVariables.animateCSS("#winBoxResult", "slideOutRight");
+        gameVariables.animateCSS("#lossBoxResult", "slideOutRight");
+        gameVariables.animateCSS("#missBoxResult", "slideOutRight");
         setTimeout(function() { 
             $("#infoModal").modal("hide"); 
             // $("#infoModal").modal('hide');
@@ -372,7 +380,7 @@ $(document).ready(function() {
             gameVariables.updateScore();
             $('#startbtn').css({"display":"block"});
             $('#startText').css({"display":"block"});
-        }, 800);
+        }, 600);
     });
 
     // Next question button click logic
