@@ -203,20 +203,20 @@ let gameVariables = {
                     </div>
                 </div>
                 <div class="row text-center">
-                    <div class="col-4">
+                    <div id="capRes1" class="col-4">
                         <h2 id="missBoxResult" class="m-auto p-2">
                         </h2>
-                        <figcaption id="capRes1" class="figure-caption text-center">Miss</figcaption>
+                        <figcaption class="figure-caption text-center">Miss</figcaption>
                     </div>
-                    <div class="col-4">
+                    <div id="capRes2" class="col-4">
                         <h2 id="lossBoxResult" class="m-auto p-2">  
                         </h2>
-                        <figcaption id="capRes2" class="figure-caption text-center">Lose</figcaption>
+                        <figcaption class="figure-caption text-center">Lose</figcaption>
                     </div>
-                    <div class="col-4">
+                    <div id="capRes3" class="col-4">
                         <h2 id="winBoxResult" class="m-auto p-2">
                         </h2>
-                        <figcaption id="capRes3" class="figure-caption text-center">Win</figcaption>
+                        <figcaption class="figure-caption text-center">Win</figcaption>
                     </div>
                 </div>
             </div>        
@@ -232,9 +232,6 @@ let gameVariables = {
         gameVariables.animateCSS("#capRes1", "slideInLeft");
         gameVariables.animateCSS("#capRes2", "slideInLeft");
         gameVariables.animateCSS("#capRes3", "slideInLeft");
-        gameVariables.animateCSS("#winBoxResult", "slideInLeft");
-        gameVariables.animateCSS("#lossBoxResult", "slideInLeft");
-        gameVariables.animateCSS("#missBoxResult", "slideInLeft");
     },  
 
     // function used to animate objects
@@ -360,9 +357,6 @@ $(document).ready(function() {
         gameVariables.animateCSS("#capRes1", "slideOutRight");
         gameVariables.animateCSS("#capRes2", "slideOutRight");
         gameVariables.animateCSS("#capRes3", "slideOutRight");
-        gameVariables.animateCSS("#winBoxResult", "slideOutRight");
-        gameVariables.animateCSS("#lossBoxResult", "slideOutRight");
-        gameVariables.animateCSS("#missBoxResult", "slideOutRight");
         setTimeout(function() { 
             $("#infoModal").modal("hide"); 
             // $("#infoModal").modal('hide');
@@ -380,7 +374,7 @@ $(document).ready(function() {
             gameVariables.updateScore();
             $('#startbtn').css({"display":"block"});
             $('#startText').css({"display":"block"});
-        }, 600);
+        }, 500);
     });
 
     // Next question button click logic
