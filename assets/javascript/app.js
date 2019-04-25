@@ -196,17 +196,17 @@ let gameVariables = {
                 </div>
                 <div class="row text-center">
                     <div class="col-4">
-                        <h2 id="missBoxResult" class="m-auto p-1">
+                        <h2 id="missBoxResult" class="m-auto p-2">
                         </h2>
                         <figcaption class="figure-caption text-center">Miss</figcaption>
                     </div>
                     <div class="col-4">
-                        <h2 id="lossBoxResult" class="m-auto p-1">  
+                        <h2 id="lossBoxResult" class="m-auto p-2">  
                         </h2>
                         <figcaption class="figure-caption text-center">Lose</figcaption>
                     </div>
                     <div class="col-4">
-                        <h2 id="winBoxResult" class="m-auto p-1">
+                        <h2 id="winBoxResult" class="m-auto p-2">
                         </h2>
                         <figcaption class="figure-caption text-center">Win</figcaption>
                     </div>
