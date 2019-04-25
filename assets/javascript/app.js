@@ -43,6 +43,10 @@ let gameVariables = {
         if (chosenAns == gamePlayArray[index].answer) {
             gameVariables.correct++;
             gameVariables.updateScore();
+            gameVariables.animateCSS("#remainingBox", "bounce");
+            gameVariables.animateCSS("#winBox", "bounce");
+            // $("#lossBox").addClass("animated bounce");
+            // $("#winBox").addClass("animated bounce");
             gameVariables.clearDivs();
             gameVariables.stopTimer();
             gameVariables.pushCorrect();
@@ -52,7 +56,12 @@ let gameVariables = {
         // Actions to take if wrong
         else {
             gameVariables.incorrect++;
+            gameVariables.animateCSS("#remainingBox", "bounce");
+            gameVariables.animateCSS("#lossBox", "bounce");
+            // $("#remainingBox").addClass("animated bounce");
+            // $("#lossBox").addClass("animated bounce");
             gameVariables.updateScore();
+            
             gameVariables.stopTimer();
             gameVariables.clearDivs();
             gameVariables.pushWrong();
@@ -168,6 +177,10 @@ let gameVariables = {
         }
 
         gameVariables.missed++;
+        gameVariables.animateCSS("#remainingBox", "bounce");
+        gameVariables.animateCSS("#remainingBox", "bounce");
+        // $("#missBox").addClass("animated bounce");
+        // $('#remainingBox').addClass("animated bounce");
         gameVariables.updateScore();
 
         // Append Data
@@ -222,6 +235,21 @@ let gameVariables = {
         $('#missBoxResult').text(gameVariables.missed);
         $("#infoModal").modal('show');
     },  
+
+    // function used to animate objects
+    animateCSS: (element, animationName, callback) => {
+        const node = document.querySelector(element)
+        node.classList.add('animated', animationName)
+    
+        function handleAnimationEnd() {
+            node.classList.remove('animated', animationName)
+            node.removeEventListener('animationend', handleAnimationEnd)
+    
+            if (typeof callback === 'function') callback()
+        }
+    
+        node.addEventListener('animationend', handleAnimationEnd)
+    }
 };
 
 //~~*~~*~~ Question Array Variables ~~*~~*~~
