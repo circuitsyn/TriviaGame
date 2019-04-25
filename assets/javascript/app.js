@@ -190,7 +190,7 @@ let gameVariables = {
     pushResults: () => {
 
         // build restart button
-        let resetButton = $("<button>", { "id": "playAgainBtn", "class": "choices btn btn-dark", "data-dismiss": "modal", "type": "button" });
+        let resetButton = $("<button>", { "id": "playAgainBtn", "class": "choices btn btn-dark", "type": "button" });
             $(resetButton).text("Play Again!");
             $("#modalFooter").append(resetButton);  
 
@@ -204,19 +204,19 @@ let gameVariables = {
                 </div>
                 <div class="row text-center">
                     <div class="col-4">
-                        <h2 id="missBoxResult" class="m-auto p-2">
+                        <h2 id="missBoxResult" class="resultBox m-auto p-2">
                         </h2>
-                        <figcaption class="figure-caption text-center">Miss</figcaption>
+                        <figcaption class="resultCap figure-caption text-center">Miss</figcaption>
                     </div>
                     <div class="col-4">
-                        <h2 id="lossBoxResult" class="m-auto p-2">  
+                        <h2 id="lossBoxResult" class="resultBox m-auto p-2">  
                         </h2>
-                        <figcaption class="figure-caption text-center">Lose</figcaption>
+                        <figcaption class="resultCap figure-caption text-center">Lose</figcaption>
                     </div>
                     <div class="col-4">
-                        <h2 id="winBoxResult" class="m-auto p-2">
+                        <h2 id="winBoxResult" class="resultBox m-auto p-2">
                         </h2>
-                        <figcaption class="figure-caption text-center">Win</figcaption>
+                        <figcaption class="resultCap figure-caption text-center">Win</figcaption>
                     </div>
                 </div>
             </div>        
@@ -229,9 +229,8 @@ let gameVariables = {
         $('#lossBoxResult').text(gameVariables.incorrect);
         $('#missBoxResult').text(gameVariables.missed);
         $("#infoModal").modal('show');
-        gameVariables.animateCSS("#winBoxResult", "slideInLeft");
-        gameVariables.animateCSS("#lossBoxResult", "slideInLeft");
-        gameVariables.animateCSS("#missBoxResult", "slideInLeft");
+        gameVariables.animateCSS(".resultCap", "slideInLeft");
+        gameVariables.animateCSS(".resultBox", "slideInLeft");
     },  
 
     // function used to animate objects
@@ -354,24 +353,26 @@ $(document).ready(function() {
     // Reset play again button logic
     $("#modalFooter").on("click", "#playAgainBtn", function(e){
         e.preventDefault();
-        gameVariables.animateCSS("#winBoxResult", "slideOutRight");
-        gameVariables.animateCSS("#lossBoxResult", "slideOutRight");
-        gameVariables.animateCSS("#missBoxResult", "slideOutRight");
-        $("#infoModal").modal('hide');
+        gameVariables.animateCSS(".resultCap", "slideOutRight");
+        gameVariables.animateCSS(".resultBox", "slideOutRight");
+        setTimeout(function() { 
+            $("#infoModal").modal("hide"); 
+            // $("#infoModal").modal('hide');
 
-        //Clearing out Divs as precaution each time
-        gameVariables.clearDivs();
-        
-        // reset game variables
-        gameVariables.missed = 0;
-        gameVariables.correct = 0;
-        gameVariables.incorrect = 0;
-        $('#remainingBox').text(gamePlayArray.length);
-        gameVariables.qCounter = 0;
-        gameVariables.timeLeft = 30;
-        gameVariables.updateScore();
-        $('#startbtn').css({"display":"block"});
-        $('#startText').css({"display":"block"});
+            //Clearing out Divs as precaution each time
+            gameVariables.clearDivs();
+            
+            // reset game variables
+            gameVariables.missed = 0;
+            gameVariables.correct = 0;
+            gameVariables.incorrect = 0;
+            $('#remainingBox').text(gamePlayArray.length);
+            gameVariables.qCounter = 0;
+            gameVariables.timeLeft = 30;
+            gameVariables.updateScore();
+            $('#startbtn').css({"display":"block"});
+            $('#startText').css({"display":"block"});
+        }, 800);
     });
 
     // Next question button click logic
