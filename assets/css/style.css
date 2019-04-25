@@ -68,10 +68,19 @@ h1 {
 
 #speaker {
     margin-right: 0px !important;
+    -webkit-transition: all 0.1s ease; /* Safari */
+    transition: all 0.1s ease;
 }
 
 #soundtrack {
     margin-left: 0px !important;
+    -webkit-transition: all 0.1s ease; /* Safari */
+    transition: all 0.1s ease;
+}
+
+.soundImgs:hover {
+    height: 65px;
+    width: 65px;
 }
 
 #startbtn {
