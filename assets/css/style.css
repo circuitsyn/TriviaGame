@@ -61,6 +61,7 @@ h1 {
 
 #startbtn {
     font-weight: bold;
+    animation-iteration-count: infinite;
 }
 
 .btn-dark:hover {

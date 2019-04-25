@@ -45,8 +45,6 @@ let gameVariables = {
             gameVariables.updateScore();
             gameVariables.animateCSS("#remainingBox", "bounce");
             gameVariables.animateCSS("#winBox", "bounce");
-            // $("#lossBox").addClass("animated bounce");
-            // $("#winBox").addClass("animated bounce");
             gameVariables.clearDivs();
             gameVariables.stopTimer();
             gameVariables.pushCorrect();
@@ -58,8 +56,6 @@ let gameVariables = {
             gameVariables.incorrect++;
             gameVariables.animateCSS("#remainingBox", "bounce");
             gameVariables.animateCSS("#lossBox", "bounce");
-            // $("#remainingBox").addClass("animated bounce");
-            // $("#lossBox").addClass("animated bounce");
             gameVariables.updateScore();
             
             gameVariables.stopTimer();
@@ -74,6 +70,7 @@ let gameVariables = {
         $('#optionSelect').empty();
         $('#question').empty();
         $('#time').empty();
+        $('#modalResults').empty();
         $("#modalTitle").empty();
         $("#modalMsg").empty();
         $("#modalImg").empty();
@@ -178,9 +175,7 @@ let gameVariables = {
 
         gameVariables.missed++;
         gameVariables.animateCSS("#remainingBox", "bounce");
-        gameVariables.animateCSS("#remainingBox", "bounce");
-        // $("#missBox").addClass("animated bounce");
-        // $('#remainingBox').addClass("animated bounce");
+        gameVariables.animateCSS("#missBox", "bounce");
         gameVariables.updateScore();
 
         // Append Data
@@ -200,7 +195,7 @@ let gameVariables = {
             $("#modalFooter").append(resetButton);  
 
         // Attach asthetic looking boxes for results
-        $("#modalBody").html(`
+        $("#modalResults").html(`
             <div class="container">
                 <div class="row text-center">
                     <div id="finalImg" class="col-12">
@@ -234,6 +229,9 @@ let gameVariables = {
         $('#lossBoxResult').text(gameVariables.incorrect);
         $('#missBoxResult').text(gameVariables.missed);
         $("#infoModal").modal('show');
+        gameVariables.animateCSS("#winBoxResult", "slideInLeft");
+        gameVariables.animateCSS("#lossBoxResult", "slideInLeft");
+        gameVariables.animateCSS("#missBoxResult", "slideInLeft");
     },  
 
     // function used to animate objects
@@ -320,7 +318,11 @@ $(document).ready(function() {
 
     // Setup Scores to Start
     gameVariables.updateScore();
-
+    gameVariables.animateCSS("#winBox", "bounce");
+    gameVariables.animateCSS("#lossBox", "bounce");
+    gameVariables.animateCSS("#missBox", "bounce");
+    gameVariables.animateCSS("#remainingBox", "bounce");
+    gameVariables.animateCSS("#startbtn", "pulse");
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Clickable Button Logic Section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Start game on start button click
     $("#startbtn").click(function(e){
@@ -352,6 +354,9 @@ $(document).ready(function() {
     // Reset play again button logic
     $("#modalFooter").on("click", "#playAgainBtn", function(e){
         e.preventDefault();
+        gameVariables.animateCSS("#winBoxResult", "slideOutRight");
+        gameVariables.animateCSS("#lossBoxResult", "slideOutRight");
+        gameVariables.animateCSS("#missBoxResult", "slideOutRight");
         $("#infoModal").modal('hide');
 
         //Clearing out Divs as precaution each time
