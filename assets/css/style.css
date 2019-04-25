@@ -59,6 +59,21 @@ h1 {
     background-color: white;
 }
 
+.soundImgs {
+    height: 60px;
+    width: 60px;
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.7));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.7));
+}
+
+#speaker {
+    margin-right: 0px !important;
+}
+
+#soundtrack {
+    margin-left: 0px !important;
+}
+
 #startbtn {
     font-weight: bold;
     animation-iteration-count: infinite;

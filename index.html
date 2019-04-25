@@ -68,6 +68,14 @@
 
         <div id="wrapper" class="d-flex justify-content-center flex-column">
 
+            <!-- Audio Control Area -->
+            <div class="audioControls float-left">
+                <div class="m-2">
+                    <img id="speaker" class="soundImgs m-2" src="assets/images/speakerOff.png" alt="speaker"/>
+                    <img id="soundtrack" class="soundImgs m-2" src="assets/images/themeOff.png" alt="soundtrack"/>
+                </div>
+            </div>
+
             <!-- Score Area -->
             <div class="scoreArea m-2 fixed-top d-flex justify-content-center">
                 <div class="m-2">
@@ -132,6 +140,13 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Game Audio -->
+            <audio>
+                <source id="soundtrack" class="audio" src="assets/audio/Common_Fight.ogg" type="audio/ogg">
+                <!-- <source src="horse.mp3" type="audio/mpeg"> -->
+            </audio>
+                  
         </div>
 
         <!-- Optional JavaScript -->
