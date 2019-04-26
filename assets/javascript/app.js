@@ -398,28 +398,43 @@ $(document).ready(function() {
     $(".scoreArea").on("click", "#soundtrack", function(e){
         e.preventDefault();
         statusCheck = $(this).attr("data-status");
-        console.log('statuscheck before: ', statusCheck)
+
+        // conditional to alternate playing music
         if (statusCheck == "true") {
             $(this).attr("data-status", "false");
-            console.log($("#audioSoundtrack")[0]);
             $("#audioSoundtrack")[0].pause();
-            
-            console.log('statuscheck true area: ', statusCheck);
+            $("#soundtrack").attr("src", "assets/images/themeOff.png")
         }
         else if (statusCheck != "true") {
             $(this).attr("data-status", "true");
             $("#audioSoundtrack")[0].play();
-            console.log('statuscheck false area: ', statusCheck);
+            $("#soundtrack").attr("src", "assets/images/themeOn.png")
         }
-        // conditional to check if playing in attribute data-status
-        // if true set to false and swap image to off & kill animation
-        // else set to true and swamp image to playing & play animation 
+
     });
 
     // Speaker mute button logic
     $(".scoreArea").on("click", "#speaker", function(e){
         e.preventDefault();
+        statusCheck = $(this).attr("data-status");
         
+        // conditional to alternate playing music
+        if (statusCheck == "true") {
+            $(this).attr("data-status", "false");
+            let soundArr = [...$('.audioClips')];
+            soundArr.forEach(function(soundItem){
+                soundItem.volume = 0;
+            });
+            $("#speaker").attr("src", "assets/images/SpeakerOff.png")
+        }
+        else if (statusCheck != "true") {
+            $(this).attr("data-status", "true");
+            let soundArr = [...$('.audioClips')];
+            soundArr.forEach(function(soundItem){
+                soundItem.volume = 1;
+            });
+            $("#speaker").attr("src", "assets/images/speakerOn.png")
+        }
     });
 
 }); 
