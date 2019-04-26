@@ -404,11 +404,14 @@ $(document).ready(function() {
             $(this).attr("data-status", "false");
             $("#audioSoundtrack")[0].pause();
             $("#soundtrack").attr("src", "assets/images/themeOff.png")
+            $("#soundtrack").css({"animation-iteration-count":"unset"});
         }
         else if (statusCheck != "true") {
             $(this).attr("data-status", "true");
             $("#audioSoundtrack")[0].play();
             $("#soundtrack").attr("src", "assets/images/themeOn.png")
+            gameVariables.animateCSS("#soundtrack", "pulse");
+            $("#soundtrack").css({"animation-iteration-count":"infinite"});
         }
 
     });
@@ -425,7 +428,8 @@ $(document).ready(function() {
             soundArr.forEach(function(soundItem){
                 soundItem.volume = 0;
             });
-            $("#speaker").attr("src", "assets/images/SpeakerOff.png")
+            $("#speaker").attr("src", "assets/images/SpeakerOff.png");
+            $("#speaker").css({"animation-iteration-count":"unset"});
         }
         else if (statusCheck != "true") {
             $(this).attr("data-status", "true");
@@ -433,7 +437,9 @@ $(document).ready(function() {
             soundArr.forEach(function(soundItem){
                 soundItem.volume = 1;
             });
-            $("#speaker").attr("src", "assets/images/speakerOn.png")
+            $("#speaker").attr("src", "assets/images/speakerOn.png");
+            gameVariables.animateCSS("#speaker", "pulse");
+            $("#speaker").css({"animation-iteration-count":"infinite"});
         }
     });
 
