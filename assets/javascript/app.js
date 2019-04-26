@@ -258,7 +258,6 @@ var gamePlayArray = [
         question: 'Name a famous SEGA character that is ultra fast, was a flagship for the system and has over 100 titles to date!',
         choices: ['A. Purple Durple', 'B. Buzby', 'C. Sonic', 'D. Tails'],
         gif: '<img class="images" src="./assets/images/Sonic.gif" alt="Sonic The Hedgehog">',
-        audio: '',
         answer: 'C. Sonic'
         
     },
@@ -267,7 +266,6 @@ var gamePlayArray = [
         question: 'Name a famous Nintendo Character that is from a famous 2d side scoller and is always trying to rescue a princess!',
         choices: ['A. Mario', 'B. Donkey Kong', 'C. Spider-man', 'D. The Terminator'],
         gif: '<img class="images" src="./assets/images/Mario.gif" alt="Mario">',
-        audio: '',
         answer: 'A. Mario'
     },
     // Crash
@@ -275,7 +273,6 @@ var gamePlayArray = [
         question: 'What terrestrial marsupial would work through portals and spin in order to defeat the evil Dr. Neo Cortex!',
         choices: ['A. Pickle Rick', 'B. Donkey Kong', 'C. Crash Bandicoot', 'D. Toad'],
         gif: '<img class="images" src="./assets/images/crashBandicoot.gif" alt="Crash Bandicoot">',
-        audio: '',
         answer: 'C. Crash Bandicoot'
     },
     // comixZone
@@ -283,7 +280,6 @@ var gamePlayArray = [
         question: 'A video game famous for traversing the pages of graphic novels in its gameplay.',
         choices: ['A. Teenage Mutant Ninja Turtles', 'B. ComixZone', 'C. Spider-man', 'D. Paperboy'],
         gif: '<img class="images" src="./assets/images/comixZone.gif" alt="Comix Zone">',
-        audio: '',
         answer: 'B. ComixZone'
     },
     // earthWormJim
@@ -291,7 +287,6 @@ var gamePlayArray = [
         question: 'Can you name a galaxy crusading annelid taking on the evils of the universe?',
         choices: ['A. Earthworm Jim', 'B. Bob Barker', 'C. Cypher', 'D. Galactic Earthworm Crusader'],
         gif: '<img class="images" src="./assets/images/earthwormJim.gif" alt="Earthworm Jim">',
-        audio: '',
         answer: 'A. Earthworm Jim'
     },
     // masterChief
@@ -299,7 +294,6 @@ var gamePlayArray = [
         question: 'What famous super soldier fought the covenant and the flood just for starters while protecting the planet earth?',
         choices: ['A. Tom Clancy', 'B. Logan', 'C. Batman', 'D. Master Chief'],
         gif: '<img class="images" src="./assets/images/masterChief.gif" alt="Master Chief">',
-        audio: '',
         answer: 'D. Master Chief'
     },
     // mortalCombat
@@ -307,7 +301,6 @@ var gamePlayArray = [
         question: 'Name a famous video game series that not only was a great fighting game, but was famous for its finishing moves!',
         choices: ['A. Street Fighter', 'B. Mortal Combat', 'C. Marvel vs. Capcom', 'D. Battle Toads'],
         gif: '<img class="images" src="./assets/images/mortalCombat.gif" alt="Mortal Combat">',
-        audio: '',
         answer: 'B. Mortal Combat'
     },
 
