@@ -206,17 +206,17 @@ let gameVariables = {
                     <div id="capRes1" class="col-4">
                         <h2 id="missBoxResult" class="m-auto p-2">
                         </h2>
-                        <figcaption class="figure-caption text-center">Miss</figcaption>
+                        <figcaption class="figure-caption txtShadow text-center">Miss</figcaption>
                     </div>
                     <div id="capRes2" class="col-4">
                         <h2 id="lossBoxResult" class="m-auto p-2">  
                         </h2>
-                        <figcaption class="figure-caption text-center">Lose</figcaption>
+                        <figcaption class="figure-caption txtShadow text-center">Lose</figcaption>
                     </div>
                     <div id="capRes3" class="col-4">
                         <h2 id="winBoxResult" class="m-auto p-2">
                         </h2>
-                        <figcaption class="figure-caption text-center">Win</figcaption>
+                        <figcaption class="figure-caption txtShadow text-center">Win</figcaption>
                     </div>
                 </div>
             </div>        
@@ -394,10 +394,35 @@ $(document).ready(function() {
         gameVariables.pushResults();  
     });
 
-});  
+    // Soundtrack button logic
+    $(".scoreArea").on("click", "#soundtrack", function(e){
+        e.preventDefault();
+        statusCheck = $(this).attr("data-status");
+        console.log('statuscheck before: ', statusCheck)
+        if (statusCheck == "true") {
+            $(this).attr("data-status", "false");
+            console.log($("#audioSoundtrack")[0]);
+            $("#audioSoundtrack")[0].pause();
+            
+            console.log('statuscheck true area: ', statusCheck);
+        }
+        else if (statusCheck != "true") {
+            $(this).attr("data-status", "true");
+            $("#audioSoundtrack")[0].play();
+            console.log('statuscheck false area: ', statusCheck);
+        }
+        // conditional to check if playing in attribute data-status
+        // if true set to false and swap image to off & kill animation
+        // else set to true and swamp image to playing & play animation 
+    });
 
-    
-    // missed alt language on missed item
+    // Speaker mute button logic
+    $(".scoreArea").on("click", "#speaker", function(e){
+        e.preventDefault();
+        
+    });
+
+}); 
     
  
 
