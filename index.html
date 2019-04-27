@@ -66,43 +66,48 @@
             </div>
         </div>
 
-        <div id="wrapper" class="d-flex justify-content-center flex-column">
+        <div id="wrapper">
 
             <!-- Score Area -->
-            <div class="scoreArea m-2 fixed-top d-flex justify-content-center">
-                <div class="m-2">
-                    <img id="soundtrack" class="soundImgs m-0" data-status="false" src="assets/images/themeOff.png" alt="soundtrack"/>
-                    <figcaption class="figure-caption txtShadow text-center">Theme</figcaption>
+            <div class="scoreArea container text-center">
+                <div class="row">
+                    <div class="offset-4 col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <h2 id="winBox" class="m-auto p-2">
+                        </h2>
+                        <figcaption class="figure-caption txtShadow text-center">Wins</figcaption>
+                    </div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <h2 id="lossBox" class="m-auto p-2">  
+                        </h2>
+                        <figcaption class="figure-caption txtShadow text-center">Fails</figcaption>
+                    </div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <h2 id="missBox" class="m-auto p-2">
+                        </h2>
+                        <figcaption class="figure-caption txtShadow text-center">Missed</figcaption>
+                    </div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <h2 id="remainingBox" class="m-auto p-2">
+                        </h2>
+                        <figcaption class="figure-caption txtShadow text-center">Left</figcaption>
+                    </div>
                 </div>
-                <div class="m-2">
-                    <h2 id="winBox" class="m-0 p-2">
-                    </h2>
-                    <figcaption class="figure-caption txtShadow text-center">Wins</figcaption>
+                <div class="row">
+                    <div class="offset-4 offset-sm-4 offset-md-4 offset-lg-5 offset-xl-5 col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+                        <img id="soundtrack" class="soundImgs m-0" data-status="false" src="assets/images/themeOff.png" alt="soundtrack"/>
+                        <figcaption class="figure-caption txtShadow text-center">Theme</figcaption>
+                    </div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <img id="speaker" class="soundImgs m-0" data-status="true" src="assets/images/speakerOff.png" alt="speaker"/>
+                        <figcaption class="figure-caption txtShadow text-center">Mute</figcaption>
+                    </div>
                 </div>
-                <div class="m-2">
-                    <h2 id="lossBox" class="m-0 p-2">  
-                    </h2>
-                    <figcaption class="figure-caption txtShadow text-center">Fails</figcaption>
-                </div>
-                <div class="m-2">
-                    <h2 id="missBox" class="m-0 p-2">
-                    </h2>
-                    <figcaption class="figure-caption txtShadow text-center">Missed</figcaption>
-                </div>
-                <div class="m-2">
-                    <h2 id="remainingBox" class="m-0 p-2">
-                    </h2>
-                    <figcaption class="figure-caption txtShadow text-center">Left</figcaption>
-                </div>
-                <div class="m-2">
-                    <img id="speaker" class="soundImgs m-0" data-status="true" src="assets/images/speakerOff.png" alt="speaker"/>
-                    <figcaption class="figure-caption txtShadow text-center">Mute</figcaption>
-                </div>
+                
             </div>
 
         
             <!-- Main game Container Area -->  
-            <div class="container mainArea pl-3 pr-3 pt-2 pb-2 my-auto">
+            <div class="container mainArea pl-3 pr-3 pt-2 pb-2 m-auto">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="txtShadow">Video Game Trivia</h1>
