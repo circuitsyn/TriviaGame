@@ -8,17 +8,15 @@
     src: url("../../assets/fonts/mainFont.woff") format("woff");
 }
 
-body, html {
+body {
+    height: 100%;
     height: 100vh;
-    width: 100vw;
     color: white;
     font-family: mainFont !important;
     opacity: 1;
     word-spacing: 10px;
     position: relative; 
-}
 
-.bg {
     /*Background image:*/
     background-image: url("../images/background.png");
 
@@ -29,15 +27,28 @@ body, html {
     background-size: cover;
 }
 
+/* .bg { */
+    /* Background image:
+    background-image: url("../images/background.png");
+
+    /* Full height */
+    /* Center and scale the image nicely */
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+/* } */
+
 #wrapper {
+    height: 100%;
+    height: 100vh;
+    min-height: 100%;
     min-height: 100vh;
-    min-width: 100vw;
 }
 
 .mainArea {
     background-color: rgba(67, 176, 71, 0.9);
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.2);
-    border: solid white 2px;
+    /* border: solid white 2px; */
     border-radius: 5px;
 }
 
