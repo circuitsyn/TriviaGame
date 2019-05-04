@@ -9,6 +9,7 @@ let gameVariables = {
     missed: 0,
     timeLeft: 30,
     qCounter: 0,
+    muted: false,
     endImage: '<img class="images mb-3" src="./assets/images/End.gif" alt="End of Game">',
 
     //method to push and track time left to make a choice
@@ -57,15 +58,31 @@ let gameVariables = {
             gameVariables.animateCSS("#remainingBox", "bounce");
             gameVariables.animateCSS("#lossBox", "bounce");
             gameVariables.updateScore();
-            
             gameVariables.stopTimer();
             gameVariables.clearDivs();
             gameVariables.pushWrong();
             gameVariables.qCounter++;
         }
     },
+
+    //Method to play audio when choice is made or missed 
+    playAudio: () => {
+        let soundClip = gamePlayArray[gameVariables.qCounter].audio;
+        console.log('muted status', gameVariables.muted)
+        if (gameVariables.muted == true) {
+            console.log('Already muted so no clip for you!')
+        }
+        else {
+            soundClip.play();
+        }  
+    },
+
+    // Muting the volume of the playing clip if any continue type button is clicked
+    muteOnNextClick: () => {
+
+    },
     
-    //method to clear div's
+    //Method to clear div's
     clearDivs: () => {
         $('#optionSelect').empty();
         $('#question').empty();
@@ -152,7 +169,8 @@ let gameVariables = {
         $('#modalMsg').append(gameVariables.correctMsg + "\"" +  gamePlayArray[gameVariables.qCounter].answer + "\"!");
         $('#modalTime').append("Time Left: " + gameVariables.timeLeft)
         $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
-        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });  
+        $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
+        playAudio();
     },
 
     // function to build the missed modal components and trigger it
@@ -323,6 +341,7 @@ $(document).ready(function() {
     gameVariables.animateCSS("#missBox", "bounce");
     gameVariables.animateCSS("#remainingBox", "bounce");
     gameVariables.animateCSS("#startbtn", "pulse");
+
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Clickable Button Logic Section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Start game on start button click
     $("#startbtn").click(function(e){
@@ -401,8 +420,7 @@ $(document).ready(function() {
 
         // conditional to alternate playing music
         if (statusCheck == "true") {
-            $(this).attr("data-status", "false");
-            $("#audioSoundtrack")[0].pause();
+            $(this).attr("data-status", "false");            $("#audioSoundtrack")[0].pause();
             $("#soundtrack").attr("src", "assets/images/themeOff.png")
             $("#soundtrack").css({"animation-iteration-count":"unset"});
         }
@@ -423,6 +441,7 @@ $(document).ready(function() {
         
         // conditional to alternate playing music
         if (statusCheck == "true") {
+            gameVariables.muted = false;
             $(this).attr("data-status", "false");
             let soundArr = [...$('.audioClips')];
             soundArr.forEach(function(soundItem){
@@ -432,6 +451,7 @@ $(document).ready(function() {
             $("#speaker").css({"animation-iteration-count":"unset"});
         }
         else if (statusCheck != "true") {
+            gameVariables.muted = true;
             $(this).attr("data-status", "true");
             let soundArr = [...$('.audioClips')];
             soundArr.forEach(function(soundItem){
