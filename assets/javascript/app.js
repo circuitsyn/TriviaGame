@@ -68,7 +68,8 @@ let gameVariables = {
     //Method to play audio when choice is made or missed 
     playAudio: () => {
         let soundClip = gamePlayArray[gameVariables.qCounter].audio;
-        console.log('muted status', gameVariables.muted)
+        $("#audioGameClip").attr("src", "./assets/audio/" + gamePlayArray[gameVariables.qCounter].audio)
+        console.log('muted status', gameVariables.muted);
         if (gameVariables.muted == true) {
             console.log('Already muted so no clip for you!')
         }
@@ -76,10 +77,25 @@ let gameVariables = {
             soundClip.play();
         }  
     },
+    
+    // TODO:
+    // ***** check the concatination of the audio string added
+    // ***** check and see the clip that is being stored ins ound clip and triggered
+    // ***** check the same attributures fo rmute flow
+    // place muted method on all continue click buttons
+    // place audio play on all 3 missed, wrong, and correct popup modal triggers
+    
 
     // Muting the volume of the playing clip if any continue type button is clicked
     muteOnNextClick: () => {
-
+        let soundClip = gamePlayArray[gameVariables.qCounter].audio;
+        console.log('muted status', gameVariables.muted)
+        if (gameVariables.muted == true) {
+            console.log('Already muted so no clip for you!')
+        }
+        else {
+            soundClip.stop();
+        }  
     },
     
     //Method to clear div's
