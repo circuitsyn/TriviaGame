@@ -67,8 +67,8 @@ let gameVariables = {
 
     //Method to play audio when choice is made or missed 
     playAudio: () => {
-        let soundClip = gamePlayArray[gameVariables.qCounter].audio;
-        $("#audioGameClip").attr("src", "./assets/audio/" + gamePlayArray[gameVariables.qCounter].audio)
+        let soundClip = $("#audioGameClip");
+        $(soundClip).attr("src", "./assets/audio/" + gamePlayArray[gameVariables.qCounter].audio)
         console.log('muted status', gameVariables.muted);
         if (gameVariables.muted == true) {
             console.log('Already muted so no clip for you!')
@@ -436,7 +436,8 @@ $(document).ready(function() {
 
         // conditional to alternate playing music
         if (statusCheck == "true") {
-            $(this).attr("data-status", "false");            $("#audioSoundtrack")[0].pause();
+            $(this).attr("data-status", "false");            
+            $("#audioSoundtrack")[0].pause();
             $("#soundtrack").attr("src", "assets/images/themeOff.png")
             $("#soundtrack").css({"animation-iteration-count":"unset"});
         }
