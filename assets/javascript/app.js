@@ -186,7 +186,7 @@ let gameVariables = {
         $('#modalTime').append("Time Left: " + gameVariables.timeLeft)
         $('#modalImg').append(gamePlayArray[gameVariables.qCounter].gif);
         $("#infoModal").modal({ show: true, backdrop: 'static', keyboard: false, focus: true });
-        playAudio();
+        // playAudio();
     },
 
     // function to build the missed modal components and trigger it
