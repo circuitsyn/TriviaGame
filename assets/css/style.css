@@ -135,6 +135,16 @@ h1 {
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
+.captionThemeMusic {
+    color: white;
+    font-size: medium;
+    margin-bottom: 0%;
+    background-color: rgba(52, 58, 64, 1);
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.2);
+    display: table;
+}
+
 .choices {
     word-spacing: inherit;    
 }
